@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!-- base structure of product.template, common with product.product -->
+    <record id="doctors_profile" model="ir.ui.view">
+        <field name="name">doctors.info</field>
+        <field name="model">doctors.info</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="doctors">
+                <sheet>
+                    <group>
+                    <field name='name'/>
+                    <field name='doctor_name'/>
+                    <field name='education'/>
+                    <field name='designation'/>
+                    <field name='department'/>
+                    <field name='sex'/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+      <record id="doctors_info_tree" model="ir.ui.view">
+        <field name="name">doctors.info.tree</field>
+        <field name="model">doctors.info</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name='name'/>
+                    <field name="doctor_name"/>
+                    <field name="education"/>
+                    <field name="designation"/>
+                    <field name="sex"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="doctors_info_act" model="ir.actions.act_window">
+        <field name="name">doctors.info</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doctors.info</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new doctors
+            </p>
+        </field>
+    </record>
+
+
+
+
+<!--    test of kanban-->
+<!--    <record id="doctors_profile_kanban" model="ir.ui.view">-->
+<!--        <field name="name">doctors.info.kanban</field>-->
+<!--        <field name="model">doctors.info</field>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--                    <field name="doctors_name"/>-->
+<!--                    <field name="age"/>-->
+<!--                    <field name="address"/>-->
+
+<!--        </field>-->
+<!--    </record>-->
+<!--    end-->
+
+        <menuitem id="menu_doctors_create" name="Doctors"
+            parent="islamia_laser.menu_doctors"
+            action="doctors_info_act" sequence="113" groups="islamia_laser.group_islamia_user"/>
+    </data>
+    </odoo>

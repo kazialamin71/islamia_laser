@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_islamia_menu,"Islamia Menu",model_investigation_item,group_islamia_user,1,1,1,1
+access_patients_menu,"Islamia Menu",model_patient_info,group_islamia_user,1,1,1,1
+access_doctors_menu,"Islamia Menu",model_doctors_info,group_islamia_user,1,1,1,1
+access_department_menu,"Islamia Menu",model_islamia_department,group_islamia_user,1,1,1,1

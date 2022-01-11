@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!-- base structure of product.template, common with product.product -->
+    <record id="islamia_department_view" model="ir.ui.view">
+        <field name="name">islamia.department</field>
+        <field name="model">islamia.department</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="doctors">
+                <sheet>
+                    <group>
+                    <field name='name'/>
+                    <field name='parent'/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+      <record id="islamia_department_tree" model="ir.ui.view">
+        <field name="name">islamia.department.tree</field>
+        <field name="model">islamia.department</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name='name'/>
+                    <field name="parent"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="islamia_department_act" model="ir.actions.act_window">
+        <field name="name">islamia.department</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">islamia.department</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Department
+            </p>
+        </field>
+    </record>
+
+
+
+
+<!--    test of kanban-->
+<!--    <record id="doctors_profile_kanban" model="ir.ui.view">-->
+<!--        <field name="name">doctors.info.kanban</field>-->
+<!--        <field name="model">doctors.info</field>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--                    <field name="doctors_name"/>-->
+<!--                    <field name="age"/>-->
+<!--                    <field name="address"/>-->
+
+<!--        </field>-->
+<!--    </record>-->
+<!--    end-->
+
+        <menuitem id="menu_department_create" name="Department"
+            parent="islamia_laser.menu_department"
+            action="islamia_department_act" sequence="114" groups="islamia_laser.group_islamia_user"/>
+    </data>
+    </odoo>

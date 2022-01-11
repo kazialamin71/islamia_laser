@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!-- base structure of product.template, common with product.product -->
+    <record id="patient_profile" model="ir.ui.view">
+        <field name="name">patient.info</field>
+        <field name="model">patient.info</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Patients">
+                <sheet>
+                    <group>
+                    <field name='name'/>
+                    <field name='patient_name'/>
+                    <field name='age'/>
+                    <field name='address'/>
+                    <field name='sex'/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+      <record id="patient_info_tree" model="ir.ui.view">
+        <field name="name">patient.info.tree</field>
+        <field name="model">patient.info</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="patient_name"/>
+                    <field name="age"/>
+                    <field name="address"/>
+                    <field name="sex"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="patient_info_act" model="ir.actions.act_window">
+        <field name="name">patient.info</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient.info</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new patient
+            </p>
+        </field>
+    </record>
+
+
+
+
+<!--    test of kanban-->
+<!--    <record id="patient_profile_kanban" model="ir.ui.view">-->
+<!--        <field name="name">patient.info.kanban</field>-->
+<!--        <field name="model">patient.info</field>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--                    <field name="patient_name"/>-->
+<!--                    <field name="age"/>-->
+<!--                    <field name="address"/>-->
+
+<!--        </field>-->
+<!--    </record>-->
+<!--    end-->
+
+        <menuitem id="menu_patient_create" name="Patients"
+            parent="islamia_laser.menu_patients"
+            action="patient_info_act" sequence="111" groups="islamia_laser.group_islamia_user"/>
+    </data>
+    </odoo>

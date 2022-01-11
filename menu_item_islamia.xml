@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Top menu item -->
+        <menuitem name="Islamia"
+            id="menu_islamia"  web_icon="account,static/description/icon.png" sequence="45"/>
+
+        <menuitem id="menu_investigation_item" name="Investigation" parent="menu_islamia" sequence="2"/>
+        <menuitem id="menu_department" name="Department" parent="menu_islamia" sequence="3"/>
+        <menuitem id="menu_doctors" name="Doctors Profile" parent="menu_islamia" sequence="4"/>
+        <menuitem id="menu_patients" name="Patient Profile" parent="menu_islamia" sequence="4"/>
+            <!-- Adviser sub-menus -->
+<!--            <menuitem id="menu_finance_entries_accounting_miscellaneous" name="Miscellaneous" parent="account.menu_finance_entries" sequence="1"/>-->
+<!--            <menuitem id="menu_finance_entries_accounting_journals" name="Journals" parent="account.menu_finance_entries" sequence="2"/>-->
+<!--            <menuitem id="menu_finance_entries_accounting_ledgers" name="Ledgers" parent="account.menu_finance_entries" sequence="3"/>-->
+<!--            <menuitem id="menu_finance_entries_management" name="Management" parent="menu_finance_entries" sequence="10" groups="account.group_account_invoice"/>-->
+<!--            <menuitem id="menu_finance_entries_actions" name="Actions" parent="account.menu_finance_entries" sequence="11"/>-->
+<!--            <menuitem id="menu_finance_entries_generate_entries" name="Generate Entries" parent="account.menu_finance_entries"/>-->
+
+    </data>
+</odoo>
