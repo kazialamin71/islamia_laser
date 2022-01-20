@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+    <!-- base structure of product.template, common with product.product -->
+    <record id="admission_bill_view" model="ir.ui.view">
+        <field name="name">admission.bill</field>
+        <field name="model">admission.bill</field>
+        <field name="mode">primary</field>
+<field name="arch" type="xml">
+            <form string="Admission Item">
+                <sheet>
+                    <group>
+                    <field name='name'/>
+                    <field name='patient_id'/>
+                    <field name='patient_name' on_change="_onchange_patient(patient_name)"/>
+                    <field name='age'/>
+                    <field name='sex'/>
+                    <field name='address'/>
+                    <field name='ref_doctors'/>
+                    </group>
+                    <notebook>
+                        <page string="Reference Value">
+                            <field name="admission_bill_line_id" mode="tree">
+                                <tree string="Ref" editable="bottom">
+                                    <field name="admission_item_entry_id"/>
+                                    <field name="department"/>
+                                    <field name="rate"/>
+                                    <field name="discount"/>
+                                    <field name="total"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name="total_without_discount"/>
+                        <field name="discount"/>
+                        <field name="flat_discount"/>
+                        <field name="grand_total"/>
+                        <field name="paid"/>
+                        <field name="due"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record id="admission_bill_act" model="ir.actions.act_window">
+        <field name="name">Admission</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">admission.bill</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Admission
+            </p>
+        </field>
+    </record>
+        <menuitem id="menu_islamia_admission_configuration" name="Admission Billing"
+            parent="islamia_laser.menu_admission"
+            action="admission_bill_act" sequence="115" groups="islamia_laser.group_islamia_user"/>
+    </data>
