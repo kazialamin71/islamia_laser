@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            string="Admission Bill"
+            id="action_report_admission_bill"
+            model="admission.bill"
+            report_type="qweb-pdf"
+            name="islamia_laser.report_admission_bill"
+            file="islamia_laser.report_admission_bill"
+            menu="True"
+        />
+
+
+
+<!--        <report-->
+<!--            string="Request for Quotation"-->
+<!--            id="report_purchase_quotation"-->
+<!--            model="purchase.order"-->
+<!--            report_type="qweb-pdf"-->
+<!--            name="purchase.report_purchasequotation"-->
+<!--            file="purchase.report_purchasequotation"-->
+<!--            print_report_name="'Request for Quotation - %s' % (object.name)"-->
+<!--        />-->
+
+
+    </data>
+</odoo>

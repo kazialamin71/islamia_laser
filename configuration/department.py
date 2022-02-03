@@ -1,6 +1,6 @@
 from odoo import models,fields
 
-class investigation_item(models.Model):
+class investigation_bill(models.Model):
     _name = 'islamia.department'
 
     name = fields.Char("Department")

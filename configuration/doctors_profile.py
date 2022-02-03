@@ -1,6 +1,6 @@
 from odoo import models,fields
 
-class investigation_item(models.Model):
+class doctors_info(models.Model):
     _name = 'doctors.info'
 
     name=fields.Char("Doctor Name")

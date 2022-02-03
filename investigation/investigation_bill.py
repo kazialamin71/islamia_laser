@@ -1,21 +1,26 @@
 from odoo import models, fields
 from odoo import api
-from odoo.exceptions import ValidationError
+# import time
 from datetime import datetime, timedelta
+from odoo.exceptions import ValidationError
+# from dateutil.relativedelta import relativedelta
+# from odoo import date,datetime,time,timedelta
+# from openerp.tools.amount_to_text_en import amount_to_text
 
 
-class admission_bill(models.Model):
-    _name = 'admission.bill'
+class investigation_bill(models.Model):
+    _name = 'investigation.bill'
 
-    date = fields.Date(string='First Day Month', required=True, default=datetime.now().strftime('%Y-%m-%d'))
+    # date=fields.Datetime('Date current action', default=fields.Datetime.now, required=False, readonly=False, select=True)
+    date=fields.Date(string='First Day Month', required=True,default=datetime.now().strftime('%Y-%m-%d'))
     name = fields.Char("Name")
     mobile = fields.Char(string="Mobile No")
-    patient_id = fields.Char("Patient ID")
+    patient_id = fields.Char("Patient ID",readonly=True)
     patient_name = fields.Many2one('patient.info', "Patient Name")
     age = fields.Char("Age")
     sex = fields.Char("Sex")
     address = fields.Char("Address")
-    ref_doctors = fields.Many2one('doctors.info', 'Admitted By')
+    ref_doctors = fields.Many2one('doctors.info', 'Referred By')
     total_without_discount = fields.Float("Total Without Discount")
     discount = fields.Float("Discount (%)")
     flat_discount = fields.Float("Flat Discount")
@@ -24,19 +29,19 @@ class admission_bill(models.Model):
     due = fields.Float("Due")
     state = fields.Selection([('pending', 'Pending'), ('confirm', 'Confirmed'), ('cancelled', 'Cancelled')], 'Status',
                              default='pending')
-    admission_bill_line_id = fields.One2many('admission.bill.line', 'admission_bill_id', "Items")
+    investigation_bill_line_id = fields.One2many('investigation.bill.line', 'investigation_bill_id', "Items")
 
     def confirm_bill(self):
         # if self.state=='confirm':
         #     raise ValidationError("Bill is already confirmed.")
-        query="update admission_bill set state=%s where id=%s"
+        query="update investigation_bill set state=%s where id=%s"
         self._cr.execute(query,['confirm',int(self.id)])
         self._cr.commit()
         mr_value={}
         if self.paid>0:
             mr_value={
                 'date':self.date,
-                'admission_id':int(self.id),
+                'bill_id':int(self.id),
                 'total_amount':self.grand_total,
                 'paid_amount':self.paid,
                 'due_amount':self.due,
@@ -45,6 +50,28 @@ class admission_bill(models.Model):
 
         mr_id=self.env['money.receipt'].create(mr_value)
         return self.env.ref('islamia_laser.action_report_investigation_bill').report_action(self)
+
+        # import pdb
+        # pdb.set_trace()
+        # call_the_report =  self.env.ref('islamia_laser.action_report_investigation_bill').report_action(self)
+        # import pdb
+        # pdb.set_trace()
+        # return call_the_report.update({'close_on_report_download': True})
+
+        # return self.env['ir.actions.report']._get_report_from_name('islamia_laser.report_investigation_bill')
+
+        # report = self.env['ir.actions.report']._get_report_from_name('islamia_laser.report_investigation_bill')
+        #
+        # records = self.env['investigation.bill'].browse(self.ids)
+        # data=None
+        # return {
+        #     'doc_ids': self._ids,
+        #     'doc_model': report.model,
+        #     'docs': records,
+        #     'data': data,
+        #     'execute_code': None,
+        #     'datetime': datetime
+        # }
 
     def add_payment(self):
         if self.state == 'pending':
@@ -60,11 +87,10 @@ class admission_bill(models.Model):
             'res_model': 'investigation.payment',
             'target': 'new',
             'context':{
-                'default_admission_id':self.id,
+                'default_bill_id':self.id,
                 'default_amount':self.due
             }
         }
-
 
 
     @api.onchange('patient_name')
@@ -75,11 +101,11 @@ class admission_bill(models.Model):
         self.address=self.patient_name.address
         self.mobile=self.patient_name.mobile
 
-    @api.onchange('admission_bill_line_id')
-    def admission_bill_line_onchange(self):
+    @api.onchange('investigation_bill_line_id')
+    def investigation_bill_line_onchange(self):
         sum=0
         total_without_discount=0
-        for item in self.admission_bill_line_id:
+        for item in self.investigation_bill_line_id:
             sum=sum+item.total
             total_without_discount=total_without_discount+item.rate
             self.total_without_discount=total_without_discount
@@ -90,30 +116,25 @@ class admission_bill(models.Model):
     @api.onchange('paid')
     def onchnage_paid(self):
         self.due=self.grand_total-self.paid
-
-    @api.onchange('discount')
-    def onchnage_discount(self):
-        self.grand_total = self.grand_total - (self.total_without_discount * self.discount) / 100
-
-    @api.onchange('grand_total')
-    def onchnage_grandtotal(self):
-        self.due = self.grand_total - self.paid
     #
     # @api.onchange('discount')
     # def onchange_percent_discount(self):
 
+    @api.onchange('discount')
+    def onchnage_discount(self):
+        self.grand_total=self.grand_total-(self.total_without_discount * self.discount)/100
 
-
-
-
+    @api.onchange('grand_total')
+    def onchnage_grandtotal(self):
+        self.due = self.grand_total - self.paid
 
     @api.model
     def create(self,vals):
 
-        stored=super(admission_bill, self).create(vals)
+        stored=super(investigation_bill, self).create(vals)
 
-        bill_name='A-0'+str(stored.id)
-        query="update admission_bill set name=%s where id=%s"
+        bill_name='Bill-0'+str(stored.id)
+        query="update investigation_bill set name=%s where id=%s"
         self._cr.execute(query,[bill_name,int(stored)])
         self._cr.commit()
         return stored
@@ -122,21 +143,22 @@ class admission_bill(models.Model):
 
 
 class investigation_bill_line(models.Model):
-    _name = 'admission.bill.line'
+    _name = 'investigation.bill.line'
 
     name = fields.Char("Item")
-    admission_bill_id = fields.Many2one('admission.bill', 'Admission ID')
-    admission_item_entry_id = fields.Many2one("admission.item.entry", "Item Name")
+    investigation_bill_id = fields.Many2one('investigation.bill', 'Investigation ID')
+    bill_item_entry_id = fields.Many2one("bill.item.entry", "Item Name")
     department = fields.Char("Department")
     rate = fields.Float("Rate")
     discount = fields.Float("Discount")
     total = fields.Float("Total")
 
-    @api.onchange('admission_item_entry_id')
+    @api.onchange('bill_item_entry_id')
     def onchange_item(self):
-        self.department=self.admission_item_entry_id.department.name
-        self.rate=self.admission_item_entry_id.rate
+        self.department=self.bill_item_entry_id.department.name
+        self.rate=self.bill_item_entry_id.rate
         self.total=self.rate-self.discount
+
 
     @api.onchange('rate')
     def onchange_rate(self):

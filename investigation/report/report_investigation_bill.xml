@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="internal_layout_header_inherit" inherit_id="web.internal_layout" priority="17">
+                <xpath expr="//div[@class='header']" position="replace">
+                    <div class="header">
+                        <div class="row mb10">
+                            <div class="col-4">
+                                <img src='/web/binary/company_logo' class="text-center" style="max-height: 95px; width:50%; margin-top:0px;" alt="Logo"/>
+                            </div>
+                            <div class="col-8">
+                                <h2 style="text-align: center;">Islamia Eye &amp; Laser Centre</h2>
+                                <p style="text-align: center; margin:0;">House: 17/3, Road: 3/A, Dhanmondi, Dhaka-1209</p>
+                                <p style="text-align: center; margin:0;">Cell: 01744215691</p>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </template>
+
+
+    <template id="report_investigation_bills">
+        <t t-call="web.internal_layout">
+<!--            <t t-set="o" t-value="o.with_context(lang=lang)"/>-->
+            <div class="page">
+                <h3 style="text-align:center; margin:0;"><strong>Payment Receipt: <span t-field="o.name"/></strong></h3>
+                <div class="row mt64">
+                    <div class="col-12 text-right" t-if="o.name">
+                       <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                            <strong>Patient ID: </strong>
+                            <span t-field="o.patient_name.patient_id"/>
+                    </div>
+                    <div class="col-4">
+                        <strong>Name: </strong><span t-field="o.patient_name.name"/>
+                    </div>
+                    <div class="col-4">
+                        <strong>Age: </strong><span t-field="o.patient_name.age"/>
+                    </div>
+                </div>
+                <div class="row mb64">
+                    <div class="col-4">
+                        <strong>Address: </strong><span t-field="o.patient_name.address"/>
+                     </div>
+                    <div class="col-4">
+                        <strong>Sex: </strong><span t-field="o.patient_name.sex"/>
+                     </div>
+                    <div class="col-4">
+                        <strong>Mobile: </strong><span t-field="o.patient_name.mobile"/>
+                     </div>
+                </div>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th><span>Item Name</span></th>
+                            <th><span>Rate</span></th>
+                             <th><span>Discount</span></th>
+                            <th class="text-right"><span>Total</span></th>
+<!--                            <th class="text-right"><span>Amount Paid</span></th>-->
+<!--                            <th class="text-right"><span>Balance</span></th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.investigation_bill_line_id" t-as="z">
+                            <td><span t-field="z.bill_item_entry_id.name"/></td>
+                            <td><span t-field="z.rate"/></td>
+                            <td><span t-field="z.discount"/></td>
+                            <td class="text-right"><span t-field="z.total"/></td>
+<!--                            <td class="text-right"><span t-field="z.rate"/></td>-->
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-6"></div>
+                    <div class="col-6 text-right">
+                        <strong>Grand Total: </strong><span t-field="o.grand_total"/><br/>
+                        <strong>Discount: </strong><span t-field="o.discount"/><br/>
+                        <strong>Paid: </strong><span t-field="o.paid"/><br/>
+                        <strong>Due: </strong><span t-field="o.due"/>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <template id="report_investigation_bill">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+<!--                <t t-set="lang" t-value="o.res_user.lang"/>-->
+                <t t-call="islamia_laser.report_investigation_bills"/>
+            </t>
+        </t>
+    </template>
+</odoo>

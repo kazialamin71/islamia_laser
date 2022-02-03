@@ -7,8 +7,13 @@
         <field name="mode">primary</field>
 <field name="arch" type="xml">
             <form string="Admission Item">
+                <header>
+                    <button name="confirm_bill" string="Confirm and Print" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
+                    <button name="add_payment" string="Add Due Payment" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
+                </header>
                 <sheet>
                     <group>
+                    <field name='date'/>
                     <field name='name'/>
                     <field name='patient_id'/>
                     <field name='patient_name' on_change="_onchange_patient(patient_name)"/>
