@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!-- base structure of product.template, common with product.product -->
+    <record id="daily_collection_view" model="ir.ui.view">
+        <field name="name">daily.collection</field>
+        <field name="model">daily.collection</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Daily Collection Reports">
+                <sheet>
+                    <group>
+                    <field name='date_start'/>
+                    <field name='date_end'/>
+                    </group>
+                    <footer>
+                    <button name="print_report" string="Print Report" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
+                    <button name="cancel" string="Cancel" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
+                </footer>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="daily_collection_act" model="ir.actions.act_window">
+        <field name="name">Collection</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">daily.collection</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Show Collection Reports
+            </p>
+        </field>
+    </record>
+
+
+        <menuitem id="menu_department_create" parent="islamia_laser.menu_report"
+            action="daily_collection_act" sequence="114" groups="islamia_laser.group_islamia_user"/>
+    </data>
+    </odoo>

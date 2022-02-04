@@ -12,3 +12,4 @@ access_admission_bill_menu,"Islamia Menu",model_admission_bill,group_islamia_use
 access_admission_bill_line_menu,"Islamia Menu",model_admission_bill_line,group_islamia_user,1,1,1,1
 access_mr_menu,"Islamia Menu",model_money_receipt,group_islamia_user,1,1,1,1
 access_add_payment,"Islamia Menu",model_investigation_payment,group_islamia_user,1,1,1,1
+access_daily_collection,"Report Menu",model_daily_collection,group_islamia_user,1,1,1,1

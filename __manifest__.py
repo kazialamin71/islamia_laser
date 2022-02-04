@@ -31,6 +31,7 @@
         'investigation/bill_payment/investigation_payment_view.xml',
         'admission/report/admission_report_btn.xml',
         'admission/report/report_admission_bill.xml',
+        'wizard/daily_collection_view.xml',
     ],
     'demo': [
     ],
