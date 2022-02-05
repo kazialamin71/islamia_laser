@@ -15,10 +15,10 @@
         'base_setup',
     ],
     'data': [
-        'investigation/investigation_bill_view.xml',
         'menu_item_islamia.xml',
         'security/islamia_security.xml',
         'security/ir.model.access.csv',
+        'investigation/investigation_bill_view.xml',
         'configuration/patient_profile_view.xml',
         'configuration/doctors_profile_view.xml',
         'configuration/department_view.xml',
