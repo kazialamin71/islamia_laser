@@ -16,7 +16,7 @@ class patient_profile(models.Model):
 
     patient_id=fields.Char("Patient Id",readonly=True)
     name=fields.Char("Patient Name",required=True)
-    age=fields.Char("Age")
+    age=fields.Char("Age",required=True)
     sex=fields.Selection([('male', 'Male'), ('female', 'Female')], 'Sex', default='male')
     mobile=fields.Char("Mobile No", required=True)
     address=fields.Char("Address")

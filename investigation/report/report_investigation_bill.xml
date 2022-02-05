@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-        <template id="internal_layout_header_inherit" inherit_id="web.internal_layout" priority="17">
+                <template id="internal_layout_header_inherit" inherit_id="web.internal_layout" priority="17">
                 <xpath expr="//div[@class='header']" position="replace">
                     <div class="header">
                         <div class="row mb10">
-                            <div class="col-4">
-                                <img src='/web/binary/company_logo' class="text-center" style="max-height: 95px; width:50%; margin-top:0px;" alt="Logo"/>
+                            <div class="col-3">
+                                <img src='/web/binary/company_logo' class="text-center" style="max-height: 95px; width:100%; margin-top:0px; padding-left:50px;" alt="Logo"/>
                             </div>
-                            <div class="col-8">
-                                <h2 style="text-align: center;">Islamia Eye &amp; Laser Centre</h2>
-                                <p style="text-align: center; margin:0;">House: 17/3, Road: 3/A, Dhanmondi, Dhaka-1209</p>
-                                <p style="text-align: center; margin:0;">Cell: 01744215691</p>
+                            <div class="col-9 float-left">
+                                <h2>Islamia Eye &amp; Laser Centre</h2>
+                                <p style="padding-left:20px;">House: 17/3, Road: 3/A, Dhanmondi, Dhaka-1209</p>
+                                <p style="padding-left:100px;">Cell: 01744215691</p>
                             </div>
                         </div>
                     </div>
@@ -23,9 +23,9 @@
 <!--            <t t-set="o" t-value="o.with_context(lang=lang)"/>-->
             <div class="page">
                 <h3 style="text-align:center; margin:0;"><strong>Payment Receipt: <span t-field="o.name"/></strong></h3>
-                <div class="row mt64">
+                <div class="row mt30">
                     <div class="col-12 text-right" t-if="o.name">
-                       <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:50px"/>
+                       <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:40px; margin-bottom:20px;"/>
                     </div>
                 </div>
                 <div class="row">
@@ -72,8 +72,16 @@
                         </tr>
                     </tbody>
                 </table>
+                <hr/>
                 <div class="row">
-                    <div class="col-6"></div>
+                    <div class="col-6">
+                        <p style="align:center;"><strong>Payment Details</strong> </p>
+                        <t t-foreach="request.env['money.receipt'].search([('bill_id','=',o.name)])" t-as="obj">
+                            <span t-if="obj.p_type=='adv'"><pre><strong>Advance:<t t-esc="obj.paid_amount"/>  (<t t-esc="obj.date"/>)</strong> </pre></span>
+                            <span t-if="obj.p_type=='due_pay'"><pre><strong>Paid   :<t t-esc="obj.paid_amount"/>  (<t t-esc="obj.date"/>) </strong></pre></span>
+
+                        </t>
+                    </div>
                     <div class="col-6 text-right">
                         <strong>Grand Total: </strong><span t-field="o.grand_total"/><br/>
                         <strong>Discount: </strong><span t-field="o.discount"/><br/>
