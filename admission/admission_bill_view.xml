@@ -14,7 +14,7 @@
                 <sheet>
                     <group>
                     <field name='date'/>
-                    <field name='name'/>
+<!--                    <field name='name'/>-->
                     <field name='patient_id'/>
                     <field name='patient_name' on_change="_onchange_patient(patient_name)"/>
                     <field name='age'/>
@@ -48,6 +48,24 @@
             </form>
         </field>
     </record>
+
+    <record id="admission_bill_tree" model="ir.ui.view">
+        <field name="name">admission.bill.tree</field>
+        <field name="model">admission.bill</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name='date'/>
+                    <field name='name'/>
+                    <field name='patient_id'/>
+                    <field name='patient_name' on_change="_onchange_patient(patient_name)"/>
+                    <field name='age'/>
+                    <field name="grand_total"/>
+                    <field name="paid"/>
+                    <field name="due"/>
+            </tree>
+        </field>
+    </record>
+
 
 
     <record id="admission_bill_act" model="ir.actions.act_window">

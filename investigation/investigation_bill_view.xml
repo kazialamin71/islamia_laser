@@ -40,6 +40,7 @@
                     <group>
                         <field name="total_without_discount"/>
                         <field name="discount"/>
+                        <field name="discount_amount"/>
                         <field name="flat_discount"/>
                         <field name="grand_total"/>
                         <field name="paid"/>
@@ -89,6 +90,23 @@
                 </graph>
             </field>
         </record>
+
+          <record id="investigation_bill_tree" model="ir.ui.view">
+        <field name="name">investigation.bill.tree</field>
+        <field name="model">investigation.bill</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name='date'/>
+                    <field name='name'/>
+                    <field name='patient_id'/>
+                    <field name='patient_name' on_change="_onchange_patient(patient_name)"/>
+                    <field name='age'/>
+                    <field name="grand_total"/>
+                    <field name="paid"/>
+                    <field name="due"/>
+            </tree>
+        </field>
+    </record>
 
 
     <record id="investigation_line_act" model="ir.actions.act_window">

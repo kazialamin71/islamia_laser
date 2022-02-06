@@ -10,21 +10,22 @@ class admission_bill(models.Model):
     date = fields.Date(string='First Day Month', required=True, default=datetime.now().strftime('%Y-%m-%d'))
     name = fields.Char("Name")
     mobile = fields.Char(string="Mobile No")
-    patient_id = fields.Char("Patient ID")
-    patient_name = fields.Many2one('patient.info', "Patient Name")
+    patient_id = fields.Char("Patient ID",readonly=True)
+    patient_name = fields.Many2one('patient.info', "Patient Name",required=True)
     age = fields.Char("Age")
     sex = fields.Char("Sex")
     address = fields.Char("Address")
-    ref_doctors = fields.Many2one('doctors.info', 'Admitted By')
+    ref_doctors = fields.Many2one('doctors.info', 'Referred By')
     total_without_discount = fields.Float("Total Without Discount")
     discount = fields.Float("Discount (%)")
+    discount_amount = fields.Float("Discounted Amount", readonly=True)
     flat_discount = fields.Float("Flat Discount")
     grand_total = fields.Float("Grand Total")
     paid = fields.Float("Paid")
     due = fields.Float("Due")
     state = fields.Selection([('pending', 'Pending'), ('confirm', 'Confirmed'), ('cancelled', 'Cancelled')], 'Status',
                              default='pending')
-    admission_bill_line_id = fields.One2many('admission.bill.line', 'admission_bill_id', "Items")
+    admission_bill_line_id = fields.One2many('admission.bill.line', 'admission_bill_id', "Items",required=True)
 
     def confirm_bill(self):
         # if self.state=='confirm':
@@ -44,7 +45,7 @@ class admission_bill(models.Model):
             }
 
         mr_id=self.env['money.receipt'].create(mr_value)
-        return self.env.ref('islamia_laser.action_report_investigation_bill').report_action(self)
+        return self.env.ref('islamia_laser.action_report_admission_bill').report_action(self)
 
     def add_payment(self):
         if self.state == 'pending':
@@ -93,7 +94,11 @@ class admission_bill(models.Model):
 
     @api.onchange('discount')
     def onchnage_discount(self):
-        self.grand_total = self.grand_total - (self.total_without_discount * self.discount) / 100
+        self.discount_amount = self.total_without_discount * self.discount / 100
+        self.grand_total = self.grand_total - self.discount_amount
+    @api.onchange('flat_discount')
+    def onchnage_discount(self):
+        self.grand_total=self.grand_total-self.flat_discount
 
     @api.onchange('grand_total')
     def onchnage_grandtotal(self):
@@ -141,6 +146,10 @@ class investigation_bill_line(models.Model):
     @api.onchange('rate')
     def onchange_rate(self):
         self.total=self.rate
+
+    @api.onchange('discount')
+    def onchange_discount(self):
+        self.total=self.total-(self.rate*self.discount)/100
 
 
 
