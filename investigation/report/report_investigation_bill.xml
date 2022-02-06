@@ -5,12 +5,12 @@
                     <div class="header">
                         <div class="row mb10">
                             <div class="col-3">
-                                <img src='/web/binary/company_logo' class="text-center" style="max-height: 95px; width:100%; margin-top:0px; padding-left:50px;" alt="Logo"/>
+                                <img src='/web/binary/company_logo' class="text-center" style="max-height: 150px; width:100%; margin-top:0px; padding-left:50px;" alt="Logo"/>
                             </div>
                             <div class="col-9 float-left">
-                                <h2>Islamia Eye &amp; Laser Centre</h2>
-                                <p style="padding-left:20px;">House: 17/3, Road: 3/A, Dhanmondi, Dhaka-1209</p>
-                                <p style="padding-left:100px;">Cell: 01744215691</p>
+                                <strong><h1>Islamia Eye &amp; Laser Centre</h1></strong>
+                                <strong><p style="padding-left:20px;">House: 17/3, Road: 3/A, Dhanmondi, Dhaka-1209</p></strong>
+                                <strong><p style="padding-left:100px;">Cell: 01744215691</p></strong>
                             </div>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
         <t t-call="web.internal_layout">
 <!--            <t t-set="o" t-value="o.with_context(lang=lang)"/>-->
             <div class="page">
-                <h3 style="text-align:center; margin:0;"><strong>Payment Receipt: <span t-field="o.name"/></strong></h3>
+                <h3 style="text-align:center; margin:0;"><strong>Money Receipt: <span t-field="o.name"/></strong></h3>
                 <div class="row mt30">
                     <div class="col-12 text-right" t-if="o.name">
                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 600, 100)" style="width:300px;height:40px; margin-bottom:20px;"/>
@@ -40,7 +40,7 @@
                         <strong>Age: </strong><span t-field="o.patient_name.age"/>
                     </div>
                 </div>
-                <div class="row mb64">
+                <div class="row">
                     <div class="col-4">
                         <strong>Address: </strong><span t-field="o.patient_name.address"/>
                      </div>
@@ -51,7 +51,14 @@
                         <strong>Mobile: </strong><span t-field="o.patient_name.mobile"/>
                      </div>
                 </div>
+                <div class="row mb64">
+                    <div class="col-8">
+                        <strong>Referred By: </strong><span t-field="o.ref_doctors.name"/>
+                     </div>
+                </div>
                 <table class="table table-sm">
+                    <t t-if="o.total_without_discount>o.grand_total">
+
                     <thead>
                         <tr>
                             <th><span>Item Name</span></th>
@@ -71,6 +78,30 @@
 <!--                            <td class="text-right"><span t-field="z.rate"/></td>-->
                         </tr>
                     </tbody>
+                    </t>
+
+<!--                    if there is no discount-->
+                    <t t-if="o.total_without_discount==o.grand_total">
+
+                    <thead>
+                        <tr>
+                            <th><span>Item Name</span></th>
+                            <th><span>Rate</span></th>
+                            <th class="text-right"><span>Total</span></th>
+<!--                            <th class="text-right"><span>Amount Paid</span></th>-->
+<!--                            <th class="text-right"><span>Balance</span></th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="o.investigation_bill_line_id" t-as="z">
+                            <td><span t-field="z.bill_item_entry_id.name"/></td>
+                            <td><span t-field="z.rate"/></td>
+                            <td class="text-right"><span t-field="z.total"/></td>
+<!--                            <td class="text-right"><span t-field="z.rate"/></td>-->
+                        </tr>
+                    </tbody>
+                    </t>
+<!--                    end-->
                 </table>
                 <hr/>
                 <div class="row">
@@ -84,7 +115,9 @@
                     </div>
                     <div class="col-6 text-right">
                         <strong>Grand Total: </strong><span t-field="o.grand_total"/><br/>
+                        <t t-if="o.total_without_discount>o.grand_total">
                         <strong>Discount: </strong><span t-field="o.discount"/><br/>
+                        </t>
                         <strong>Paid: </strong><span t-field="o.paid"/><br/>
                         <strong>Due: </strong><span t-field="o.due"/>
                     </div>

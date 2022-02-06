@@ -16,20 +16,21 @@ class investigation_bill(models.Model):
     name = fields.Char("Name")
     mobile = fields.Char(string="Mobile No")
     patient_id = fields.Char("Patient ID",readonly=True)
-    patient_name = fields.Many2one('patient.info', "Patient Name")
+    patient_name = fields.Many2one('patient.info', "Patient Name",required=True)
     age = fields.Char("Age")
     sex = fields.Char("Sex")
     address = fields.Char("Address")
     ref_doctors = fields.Many2one('doctors.info', 'Referred By',required=True)
     total_without_discount = fields.Float("Total Without Discount")
     discount = fields.Float("Discount (%)")
+    discount_amount=fields.Float("Discounted Amount",readonly=True)
     flat_discount = fields.Float("Flat Discount")
     grand_total = fields.Float("Grand Total")
     paid = fields.Float("Paid")
     due = fields.Float("Due")
     state = fields.Selection([('pending', 'Pending'), ('confirm', 'Confirmed'), ('cancelled', 'Cancelled')], 'Status',
                              default='pending')
-    investigation_bill_line_id = fields.One2many('investigation.bill.line', 'investigation_bill_id', "Items")
+    investigation_bill_line_id = fields.One2many('investigation.bill.line', 'investigation_bill_id', "Items",required=True)
 
     def confirm_bill(self):
         # if self.state=='confirm':
@@ -121,8 +122,14 @@ class investigation_bill(models.Model):
     # def onchange_percent_discount(self):
 
     @api.onchange('discount')
+    def onchange_discount(self):
+        self.discount_amount=self.total_without_discount * self.discount/100
+        self.grand_total=self.grand_total-(self.total_without_discount * self.discount/100)
+
+
+    @api.onchange('flat_discount')
     def onchnage_discount(self):
-        self.grand_total=self.grand_total-(self.total_without_discount * self.discount)/100
+        self.grand_total=self.grand_total-self.flat_discount
 
     @api.onchange('grand_total')
     def onchnage_grandtotal(self):
@@ -163,6 +170,11 @@ class investigation_bill_line(models.Model):
     @api.onchange('rate')
     def onchange_rate(self):
         self.total=self.rate
+
+    @api.onchange('discount')
+    def onchange_discount(self):
+        self.total=self.total-(self.rate*self.discount)/100
+
 
 
 
