@@ -13,7 +13,7 @@ class investigation_bill(models.Model):
 
     # date=fields.Datetime('Date current action', default=fields.Datetime.now, required=False, readonly=False, select=True)
     date=fields.Date(string='First Day Month', required=True,default=datetime.now().strftime('%Y-%m-%d'))
-    name = fields.Char("Name", required=True)
+    name = fields.Char("Name")
     mobile = fields.Char(string="Mobile No")
     patient_id = fields.Char("Patient ID",readonly=True)
     patient_name = fields.Many2one('patient.info', "Patient Name")
