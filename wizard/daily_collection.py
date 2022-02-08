@@ -7,12 +7,12 @@ class daily_collection(models.Model):
     date_start = fields.Datetime("Start Date")
     date_end = fields.Datetime("End Date")
 
-    # def print_report(self):
-    #     datas={'id':self.id}
-    #     res=self.read(['date_start'])
-    #     import pdb
-    #     pdb.set_trace()
-
+    def print_report(self):
+        datas = {'ids': self.env.context.get('active_ids', [])}
+        res=self.read(['date_start','date_end'])
+        res=res and res[0] or {}
+        datas['form']=res
+        return self.env.ref('islamia_laser.action_report_details_collection').report_action([], data=datas)
 
 
 
