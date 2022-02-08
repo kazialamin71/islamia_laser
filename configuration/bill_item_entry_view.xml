@@ -78,7 +78,7 @@
         <field name="name">Bill Item Entry</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">bill.item.entry</field>
-        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
         <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
@@ -96,6 +96,6 @@
 
         <menuitem id="menu_bill_item_entry" name="Bill Item Entry"
             parent="islamia_laser.menu_investigation_item"
-            action="bill_item_entry_act" sequence="115" groups="islamia_laser.group_islamia_user"/>
+            action="bill_item_entry_act" sequence="115" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
     </data>
     </odoo>

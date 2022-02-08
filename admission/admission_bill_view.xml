@@ -8,8 +8,9 @@
 <field name="arch" type="xml">
             <form string="Admission Item">
                 <header>
-                    <button name="confirm_bill" string="Confirm and Print" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
-                    <button name="add_payment" string="Add Due Payment" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
+                    <button name="confirm_bill" string="Confirm and Print" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
+                    <button name="add_payment" string="Add Due Payment" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
+                    <button name="cancel_bill" string="Cancel Bill" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
                 </header>
                 <sheet>
                     <group>
@@ -62,6 +63,7 @@
                     <field name="grand_total"/>
                     <field name="paid"/>
                     <field name="due"/>
+                    <field name="state"/>
             </tree>
         </field>
     </record>
@@ -82,5 +84,5 @@
     </record>
         <menuitem id="menu_islamia_admission_configuration" name="Admission Billing"
             parent="islamia_laser.menu_admission"
-            action="admission_bill_act" sequence="115" groups="islamia_laser.group_islamia_user"/>
+            action="admission_bill_act" sequence="115" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
     </data>

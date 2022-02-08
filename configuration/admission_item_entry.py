@@ -3,9 +3,9 @@ from odoo import models,fields
 class admission_item_entry(models.Model):
     _name = 'admission.item.entry'
 
-    name = fields.Char("Name")
+    name = fields.Char("Name",required=True)
     department=fields.Many2one('islamia.department',"Department")
-    rate=fields.Float("Rate")
+    rate=fields.Float("Rate",required=True)
     required_time=fields.Integer("Required Date")
     sample_req=fields.Boolean("Sample Required")
     admission_item_entry_line_id=fields.One2many('admission.item.entry.line','admission_item_entry_id',string="Parameters")

@@ -18,6 +18,8 @@
                     <field name='paid_amount'/>
                     <field name='due_amount'/>
                     <field name='p_type'/>
+                    <field name='user_id'/>
+                    <field name='state'/>
                     </group>
                 </sheet>
 
@@ -38,6 +40,7 @@
                     <field name='paid_amount'/>
                     <field name='due_amount'/>
                     <field name='p_type'/>
+                    <field name='state'/>
             </tree>
         </field>
     </record>
@@ -75,6 +78,6 @@
 
         <menuitem id="menu_mr_create" name="Money Receipt"
             parent="islamia_laser.menu_department"
-            action="islamia_mr_act" sequence="114" groups="islamia_laser.group_islamia_user"/>
+            action="islamia_mr_act" sequence="114" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
     </data>
     </odoo>

@@ -13,3 +13,21 @@ access_admission_bill_line_menu,"Islamia Menu",model_admission_bill_line,group_i
 access_mr_menu,"Islamia Menu",model_money_receipt,group_islamia_user,1,1,1,1
 access_add_payment,"Islamia Menu",model_investigation_payment,group_islamia_user,1,1,1,1
 access_daily_collection,"Report Menu",model_daily_collection,group_islamia_user,1,1,1,1
+
+
+
+access_islamia_menu_general,"Islamia Menu",model_investigation_bill,group_islamia_general,1,0,1,0
+access_islamia_menu_entry_line_general,"Islamia Menu",model_investigation_bill_line,group_islamia_general,1,1,1,0
+access_patients_menu_general,"Islamia Menu",model_patient_info,group_islamia_general,1,1,1,0
+access_doctors_menu_general,"Islamia Menu",model_doctors_info,group_islamia_general,1,1,1,0
+access_department_menu_general,"Islamia Menu",model_islamia_department,group_islamia_general,1,1,1,0
+access_bill_item_menu_general,"Islamia Menu",model_bill_item_entry,group_islamia_general,1,1,1,0
+access_bill_item_entry_menu_general,"Islamia Menu",model_bill_item_entry_line,group_islamia_general,1,1,1,0
+access_admission_item_line_menu_general,"Islamia Menu",model_admission_item_entry_line,group_islamia_general,1,1,1,0
+access_admission_item_menu_general,"Islamia Menu",model_admission_item_entry,group_islamia_general,1,1,1,0
+access_admission_bill_menu_general,"Islamia Menu",model_admission_bill,group_islamia_general,1,0,1,0
+access_admission_bill_line_menu_general,"Islamia Menu",model_admission_bill_line,group_islamia_general,1,1,1,0
+access_mr_menu_general,"Islamia Menu",model_money_receipt,group_islamia_general,1,0,1,0
+access_add_payment_general,"Islamia Menu",model_investigation_payment,group_islamia_general,1,1,1,0
+access_daily_collection_general,"Report Menu",model_daily_collection,group_islamia_general,1,1,1,0
+

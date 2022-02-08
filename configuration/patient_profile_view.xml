@@ -70,6 +70,6 @@
 
         <menuitem id="menu_patient_create" name="Patients"
             parent="islamia_laser.menu_patients"
-            action="patient_info_act" sequence="111" groups="islamia_laser.group_islamia_user"/>
+            action="patient_info_act" sequence="111" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
     </data>
     </odoo>

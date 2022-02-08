@@ -33,8 +33,8 @@ class investigation_bill(models.Model):
     investigation_bill_line_id = fields.One2many('investigation.bill.line', 'investigation_bill_id', "Items",required=True)
 
     def confirm_bill(self):
-        # if self.state=='confirm':
-        #     raise ValidationError("Bill is already confirmed.")
+        if self.state=='confirm':
+            raise ValidationError("Bill is already confirmed.")
         query="update investigation_bill set state=%s where id=%s"
         self._cr.execute(query,['confirm',int(self.id)])
         self._cr.commit()
@@ -73,6 +73,14 @@ class investigation_bill(models.Model):
         #     'execute_code': None,
         #     'datetime': datetime
         # }
+
+    def cancel_bill(self):
+        query="update investigation_bill set state=%s where id=%s"
+        self._cr.execute(query,['cancelled',int(self.id)])
+        query="update money_receipt set state=%s where bill_id=%s"
+        self._cr.execute(query,['cancelled',int(self.id)])
+        self._cr.commit()
+
 
     def add_payment(self):
         if self.state == 'pending':
@@ -137,8 +145,10 @@ class investigation_bill(models.Model):
 
     @api.model
     def create(self,vals):
-
-        stored=super(investigation_bill, self).create(vals)
+        if vals['due']>=0:
+            stored=super(investigation_bill, self).create(vals)
+        else:
+            raise ValidationError("What!you put wrong value in paid")
 
         bill_name='Bill-0'+str(stored.id)
         query="update investigation_bill set name=%s where id=%s"

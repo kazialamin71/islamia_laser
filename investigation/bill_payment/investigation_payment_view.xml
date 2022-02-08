@@ -17,8 +17,8 @@
                     </group>
 
                     <footer>
-                        <button name="btn_add_payment" string="Add" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user"/>
-                    <button name="btn_cancel" string="Cancel" class="btn btn-primary oe_highlight" type="object"  groups="islamia_laser.group_islamia_user"/>
+                        <button name="btn_add_payment" string="Add" class="btn btn-primary" type="object" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
+                    <button name="btn_cancel" string="Cancel" class="btn btn-primary oe_highlight" type="object"  groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
                     </footer>
                 </sheet>
 

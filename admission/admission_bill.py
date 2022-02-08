@@ -28,8 +28,8 @@ class admission_bill(models.Model):
     admission_bill_line_id = fields.One2many('admission.bill.line', 'admission_bill_id', "Items",required=True)
 
     def confirm_bill(self):
-        # if self.state=='confirm':
-        #     raise ValidationError("Bill is already confirmed.")
+        if self.state=='confirm':
+            raise ValidationError("Bill is already confirmed.")
         query="update admission_bill set state=%s where id=%s"
         self._cr.execute(query,['confirm',int(self.id)])
         self._cr.commit()

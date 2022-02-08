@@ -39,6 +39,6 @@
 
 
         <menuitem id="menu_department_create" parent="islamia_laser.menu_report"
-            action="daily_collection_act" sequence="114" groups="islamia_laser.group_islamia_user"/>
+            action="daily_collection_act" sequence="114" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
     </data>
     </odoo>

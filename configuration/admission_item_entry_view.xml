@@ -78,6 +78,6 @@
 
         <menuitem id="menu_admission_item_entry" name="Admission Item Entry"
             parent="islamia_laser.menu_admission"
-            action="admission_item_entry_act" sequence="115" groups="islamia_laser.group_islamia_user"/>
+            action="admission_item_entry_act" sequence="115" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
     </data>
     </odoo>

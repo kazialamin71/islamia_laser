@@ -13,6 +13,8 @@ class money_receipt(models.Model):
     p_type=fields.Selection([('adv','Advance'),('due_pay','Due Payment')],"Payment Type")
     already_collected=fields.Boolean("Already collected")
     user_id=fields.Many2one('res.users','Current User',default=lambda self: self.env.user.id)
+    state = fields.Selection([('confirm', 'Confirmed'), ('cancelled', 'Cancelled')], 'Status',
+                             default='confirm')
 
 
 
