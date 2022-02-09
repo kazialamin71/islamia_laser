@@ -14,6 +14,9 @@ class daily_collection(models.Model):
         datas['form']=res
         return self.env.ref('islamia_laser.action_report_details_collection').report_action([], data=datas)
 
+    def cancel(self):
+        return True
+
 
 
 
