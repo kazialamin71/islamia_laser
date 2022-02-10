@@ -145,7 +145,7 @@ class investigation_bill(models.Model):
 
     @api.model
     def create(self,vals):
-        if vals['due']>=0:
+        if vals['due']>=0 and vals['paid']>0:
             stored=super(investigation_bill, self).create(vals)
         else:
             raise ValidationError("What!you put wrong value in paid")
