@@ -16,22 +16,34 @@
                         <th>Bill_id</th>
                             <th>Patient Name</th>
                         <th>Grand Total</th>
-
                         <th>Paid</th>
+                        <th>Doctors Payment</th>
+                        <th>Cash</th>
                         </tr>
                     </thead>
                     <tbody>
                         <t t-set="sl" t-value="0"/>
                         <t t-set="total_paid" t-value="0"/>
+                        <t t-set="cash_collected" t-value="0"/>
+                        <t t-set="total_cash" t-value="0"/>
                         <tr t-foreach="data['values']" t-as="obj">
                             <t t-set="sl" t-value="sl+1"/>
                             <t t-set="total_paid" t-value="total_paid+obj[3]"/>
+                            <t t-if="obj[5]">
+                            <t t-set="cash" t-value="obj[3]-obj[5]"/>
+                            </t>
+                            <t t-else="">
+                            <t t-set="cash" t-value="obj[3]"/>
+                            </t>
+                            <t t-set="total_cash" t-value="total_cash+cash"/>
                             <td><span t-esc="sl"/> </td>
 
                             <td><span t-esc="obj[0]"/></td>
                             <td><span t-esc="obj[2]"/></td>
                             <td><span t-esc="obj[1]"/></td>
                             <td><span t-esc="obj[3]"/></td>
+                            <td><span t-esc="obj[5]"/></td>
+                            <td><span t-esc="cash"/></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -39,6 +51,8 @@
                             <td></td>
                         <td><b>Total Collection</b></td>
                         <td> <span t-esc="total_paid"></span> </td>
+                            <td><b>Total Cash</b></td>
+                        <td> <span t-esc="total_cash"></span> </td>
                         </tr>
                     </tbody>
 

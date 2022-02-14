@@ -20,6 +20,7 @@
                     <field name='p_type'/>
                     <field name='user_id'/>
                     <field name='state'/>
+                    <field name='doctors_payment'/>
                     </group>
                 </sheet>
 

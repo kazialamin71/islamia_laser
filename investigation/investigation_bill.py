@@ -28,6 +28,8 @@ class investigation_bill(models.Model):
     grand_total = fields.Float("Grand Total")
     paid = fields.Float("Paid")
     due = fields.Float("Due")
+    doctor_payment=fields.Float("Doctors Payment")
+    doctor_name=fields.Many2one("doctors.info","Doctor Name")
     state = fields.Selection([('pending', 'Pending'), ('confirm', 'Confirmed'), ('cancelled', 'Cancelled')], 'Status',
                              default='pending')
     investigation_bill_line_id = fields.One2many('investigation.bill.line', 'investigation_bill_id', "Items",required=True)
@@ -46,7 +48,8 @@ class investigation_bill(models.Model):
                 'total_amount':self.grand_total,
                 'paid_amount':self.paid,
                 'due_amount':self.due,
-                'p_type':'adv'
+                'p_type':'adv',
+                'doctors_payment':self.doctor_payment
             }
 
         mr_id=self.env['money.receipt'].create(mr_value)
@@ -156,6 +159,15 @@ class investigation_bill(models.Model):
         self._cr.commit()
         return stored
 
+    def write(self,vals):
+        res = super(investigation_bill, self).write(vals)
+        if vals['doctor_payment']:
+            mr_obj=self.env['money.receipt'].search([('bill_id', '=', self.name),('p_type','=','adv')])
+            mr_id=mr_obj.id
+            query = "update money_receipt set doctors_payment=%s where id=%s"
+            self._cr.execute(query, [vals['doctor_payment'], mr_id])
+            self._cr.commit()
+            return res
 
 
 

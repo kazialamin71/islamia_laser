@@ -8,6 +8,7 @@ class doctors_info(models.Model):
     designation=fields.Char("Designation",required=True)
     department=fields.Char("Department")
     sex=fields.Selection([('male', 'Male'), ('female', 'Female')], 'Sex', default='male')
+    bill_info=fields.One2many('investigation.bill','ref_doctors',"Bill Info")
 
 
 

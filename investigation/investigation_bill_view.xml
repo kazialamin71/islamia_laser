@@ -46,6 +46,8 @@
                         <field name="grand_total"/>
                         <field name="paid"/>
                         <field name="due"/>
+                        <field name="doctor_payment"/>
+                        <field name="doctor_name"/>
                     </group>
                 </sheet>
 

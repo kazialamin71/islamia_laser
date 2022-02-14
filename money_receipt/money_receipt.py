@@ -10,6 +10,7 @@ class money_receipt(models.Model):
     total_amount=fields.Float("Total Amount")
     paid_amount=fields.Float("Paid Amount")
     due_amount=fields.Float("Due Amount")
+    doctors_payment=fields.Float("Doctors Payment")
     p_type=fields.Selection([('adv','Advance'),('due_pay','Due Payment')],"Payment Type")
     already_collected=fields.Boolean("Already collected")
     user_id=fields.Many2one('res.users','Current User',default=lambda self: self.env.user.id)
