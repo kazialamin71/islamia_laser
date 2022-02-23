@@ -12,7 +12,7 @@ class investigation_bill(models.Model):
     _name = 'investigation.bill'
 
     # date=fields.Datetime('Date current action', default=fields.Datetime.now, required=False, readonly=False, select=True)
-    date=fields.Date(string='First Day Month', required=True,default=datetime.now().strftime('%Y-%m-%d'))
+    date=fields.Date(string='Date', required=True,default=datetime.now().strftime('%Y-%m-%d'))
     name = fields.Char("Name")
     mobile = fields.Char(string="Mobile No")
     patient_id = fields.Char("Patient ID",readonly=True)
@@ -135,12 +135,12 @@ class investigation_bill(models.Model):
     @api.onchange('discount')
     def onchange_discount(self):
         self.discount_amount=self.total_without_discount * self.discount/100
-        self.grand_total=self.grand_total-(self.total_without_discount * self.discount/100)
+        self.grand_total=self.total_without_discount-(self.total_without_discount * self.discount/100)
 
 
     @api.onchange('flat_discount')
     def onchnage_discount(self):
-        self.grand_total=self.grand_total-self.flat_discount
+        self.grand_total=self.total_without_discount-self.flat_discount
 
     @api.onchange('grand_total')
     def onchnage_grandtotal(self):
@@ -161,13 +161,13 @@ class investigation_bill(models.Model):
 
     def write(self,vals):
         res = super(investigation_bill, self).write(vals)
-        if vals['doctor_payment']:
-            mr_obj=self.env['money.receipt'].search([('bill_id', '=', self.name),('p_type','=','adv')])
+        if vals.get('doctor_payment'):
+            mr_obj=self.env['money.receipt'].search([('bill_id', '=', self.name),('p_type','=','adv')])[0]
             mr_id=mr_obj.id
             query = "update money_receipt set doctors_payment=%s where id=%s"
             self._cr.execute(query, [vals['doctor_payment'], mr_id])
             self._cr.commit()
-            return res
+        return res
 
 
 

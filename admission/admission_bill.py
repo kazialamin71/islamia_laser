@@ -95,10 +95,10 @@ class admission_bill(models.Model):
     @api.onchange('discount')
     def onchnage_discount(self):
         self.discount_amount = self.total_without_discount * self.discount / 100
-        self.grand_total = self.grand_total - self.discount_amount
+        self.grand_total = self.total_without_discount - self.discount_amount
     @api.onchange('flat_discount')
     def onchnage_discount(self):
-        self.grand_total=self.grand_total-self.flat_discount
+        self.grand_total=self.total_without_discount-self.flat_discount
 
     @api.onchange('grand_total')
     def onchnage_grandtotal(self):

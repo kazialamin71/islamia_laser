@@ -15,6 +15,9 @@
                         <th>Sl</th>
                         <th>Bill_id</th>
                             <th>Patient Name</th>
+                            <th>Referred by</th>
+                            <th>Total</th>
+                            <th>Discount</th>
                         <th>Grand Total</th>
                         <th>Paid</th>
                         <th>Doctors Payment</th>
@@ -28,24 +31,36 @@
                         <t t-set="total_cash" t-value="0"/>
                         <tr t-foreach="data['values']" t-as="obj">
                             <t t-set="sl" t-value="sl+1"/>
-                            <t t-set="total_paid" t-value="total_paid+obj[3]"/>
-                            <t t-if="obj[5]">
-                            <t t-set="cash" t-value="obj[3]-obj[5]"/>
+                            <t t-set="total_paid" t-value="total_paid+obj[4]"/>
+                            <t t-if="obj[6]">
+                            <t t-set="cash" t-value="obj[4]-obj[6]"/>
                             </t>
                             <t t-else="">
-                            <t t-set="cash" t-value="obj[3]"/>
+                            <t t-set="cash" t-value="obj[4]"/>
                             </t>
                             <t t-set="total_cash" t-value="total_cash+cash"/>
+                            <t t-if="obj[8] is not False">
+                            <t t-set="total_discount" t-value="obj[7]+obj[8]"/>
+                            </t>
+                             <t t-else="">
+                             <t t-set="total_discount" t-value="obj[7]"/>
+                            </t>
                             <td><span t-esc="sl"/> </td>
 
                             <td><span t-esc="obj[0]"/></td>
-                            <td><span t-esc="obj[2]"/></td>
-                            <td><span t-esc="obj[1]"/></td>
                             <td><span t-esc="obj[3]"/></td>
-                            <td><span t-esc="obj[5]"/></td>
+                            <td><span t-esc="obj[9]"/></td>
+                            <td><span t-esc="obj[1]"/></td>
+                            <td><span t-esc="total_discount"/></td>
+                            <td><span t-esc="obj[2]"/></td>
+                            <td><span t-esc="obj[4]"/></td>
+                            <td><span t-esc="obj[6]"/></td>
                             <td><span t-esc="cash"/></td>
                         </tr>
                         <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

@@ -41,7 +41,7 @@
                     <group>
                         <field name="total_without_discount"/>
                         <field name="discount"/>
-                        <field name="discount_amount"/>
+                        <field name="discount_amount" force_save="1"/>
                         <field name="flat_discount"/>
                         <field name="grand_total"/>
                         <field name="paid"/>

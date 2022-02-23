@@ -40,6 +40,7 @@
                     <field name='total_amount'/>
                     <field name='paid_amount'/>
                     <field name='due_amount'/>
+                    <field name='doctors_payment'/>
                     <field name='p_type'/>
                     <field name='state'/>
             </tree>
