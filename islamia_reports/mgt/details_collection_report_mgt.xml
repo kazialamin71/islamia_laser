@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <report
-           string="Collection Report"
+           string="Collection Report MGT"
             id="action_report_details_collection_mgt"
             model="details.collection"
             report_type="qweb-pdf"
