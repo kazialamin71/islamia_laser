@@ -13,6 +13,8 @@ access_admission_bill_line_menu,"Islamia Menu",model_admission_bill_line,group_i
 access_mr_menu,"Islamia Menu",model_money_receipt,group_islamia_user,1,1,1,1
 access_add_payment,"Islamia Menu",model_investigation_payment,group_islamia_user,1,1,1,1
 access_daily_collection,"Report Menu",model_daily_collection,group_islamia_user,1,1,1,1
+access_daily_collection_mgt,"Report Menu",model_daily_collection_mgt,group_islamia_user,1,1,1,1
+access_examinemenu,"Report Menu",model_examinee_info,group_islamia_user,1,1,1,1
 
 
 
@@ -30,4 +32,6 @@ access_admission_bill_line_menu_general,"Islamia Menu",model_admission_bill_line
 access_mr_menu_general,"Islamia Menu",model_money_receipt,group_islamia_general,1,0,1,0
 access_add_payment_general,"Islamia Menu",model_investigation_payment,group_islamia_general,1,1,1,0
 access_daily_collection_general,"Report Menu",model_daily_collection,group_islamia_general,1,1,1,0
+access_daily_collection_general_mgt,"Report Menu",model_daily_collection_mgt,group_islamia_general,1,1,1,0
+access_examinemenu_general,"Report Menu",model_examinee_info,group_islamia_general,1,1,1,0
 

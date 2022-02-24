@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<template id="report_details_collection">
+<template id="report_details_collection_mgt">
     <t t-call="web.html_container">
         <t t-call="web.internal_layout">
             <div class="page">
                     <h2 style="text-align:center;">Daily Collection Report</h2>
                 <div class="row">
-                    <p><span t-esc="data['start_date']"/> to <span t-esc="data['end_date']"/></p>
+                    <b><p><span t-esc="data['start_date']"/> to <span t-esc="data['end_date']"/></p></b>
                 </div>
 
                 <table class="table table-condensed">
@@ -14,15 +14,14 @@
                         <tr>
                         <th>Sl</th>
                         <th>Bill_id</th>
+                        <th>Item Name</th>
                             <th>Patient Name</th>
                             <th>Referred by</th>
                             <th>Total</th>
                             <th>Discount</th>
                         <th>Grand Total</th>
                         <th>Paid</th>
-                        <th>Professionals</th>
-                        <th>Payment</th>
-                        <th>Cash</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -49,20 +48,24 @@
                             <td><span t-esc="sl"/> </td>
 
                             <td><span t-esc="obj[0]"/></td>
+                            <td>
+
+                            <t t-foreach="data['value']" t-as="val">
+                                <t t-if="obj[0]==val[0]">
+
+                                    <p><span t-esc="val[1]"/></p>
+                                </t>
+                            </t>
+                            </td>
                             <td><span t-esc="obj[3]"/></td>
                             <td><span t-esc="obj[9]"/></td>
                             <td><span t-esc="obj[1]"/></td>
                             <td><span t-esc="total_discount"/></td>
                             <td><span t-esc="obj[2]"/></td>
                             <td><span t-esc="obj[4]"/></td>
-                            <td><span t-esc="obj[10]"/></td>
-                            <td><span t-esc="obj[6]"/></td>
-                            <td><span t-esc="cash"/></td>
+
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>

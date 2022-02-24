@@ -3,15 +3,15 @@ from odoo import models,fields
 from datetime import datetime
 from datetime import timedelta
 
-class details_collection(models.Model):
-    _name = 'details.collection'
+class details_collection_mgt(models.Model):
+    _name = 'details.collection.mgt'
 
     name = fields.Char("Mr ID")
 
 
 
-class report_detail_component(models.AbstractModel):
-    _name = 'report.islamia_laser.report_details_collection'
+class report_detail_component_mgt(models.AbstractModel):
+    _name = 'report.islamia_laser.report_details_collection_mgt'
     _description = 'Product Price List Report'
 
     @api.model
@@ -27,6 +27,11 @@ class report_detail_component(models.AbstractModel):
 
         self._cr.execute(query,[start_date,end_date])
         values=self._cr.fetchall()
+
+        query="select b.name,bie.name from investigation_bill_line ibl LEFT JOIN bill_item_entry bie ON bie.id=ibl.bill_item_entry_id LEFT JOIN investigation_bill b ON ibl.investigation_bill_id=b.id group by b.name,bie.name"
+
+        self._cr.execute(query,[start_date,end_date])
+        value=self._cr.fetchall()
         DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
         date_field1 = datetime.strptime(start_date, DATETIME_FORMAT)
 
@@ -34,6 +39,7 @@ class report_detail_component(models.AbstractModel):
 
         start_date = date_field1 + timedelta(hours=6, minutes=0)
         end_date = date_field2 + timedelta(hours=6, minutes=0)
+
         return {
             'doc_ids': data.get('ids', data.get('active_ids')),
             'doc_model': 'details.collection',
@@ -41,8 +47,9 @@ class report_detail_component(models.AbstractModel):
             'data': dict(
                 data,
                 values=values,
+                value=value,
                 start_date=start_date,
-                end_date=end_date
+                end_date=end_date,
             ),
         }
 

@@ -29,7 +29,7 @@ class investigation_bill(models.Model):
     paid = fields.Float("Paid")
     due = fields.Float("Due")
     doctor_payment=fields.Float("Doctors Payment")
-    doctor_name=fields.Many2one("doctors.info","Doctor Name")
+    professionals_name=fields.Many2one("examinee.info","Professionals Name")
     state = fields.Selection([('pending', 'Pending'), ('confirm', 'Confirmed'), ('cancelled', 'Cancelled')], 'Status',
                              default='pending')
     investigation_bill_line_id = fields.One2many('investigation.bill.line', 'investigation_bill_id', "Items",required=True)

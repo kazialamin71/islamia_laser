@@ -1,0 +1,1 @@
+from . import details_collection_mgt

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+           string="Collection Report"
+            id="action_report_details_collection_mgt"
+            model="details.collection"
+            report_type="qweb-pdf"
+            name="islamia_laser.report_details_collection_mgt"
+            file="islamia_laser.report_details_collection_mgt"
+            menu="False"
+        />
+    </data>
+
+</odoo>

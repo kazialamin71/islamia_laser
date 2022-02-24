@@ -47,7 +47,7 @@
                         <field name="paid"/>
                         <field name="due"/>
                         <field name="doctor_payment"/>
-                        <field name="doctor_name"/>
+                        <field name="professionals_name"/>
                     </group>
                 </sheet>
 
