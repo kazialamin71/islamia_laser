@@ -28,17 +28,11 @@
                         <t t-set="sl" t-value="0"/>
                         <t t-set="total_paid" t-value="0"/>
                         <t t-set="cash_collected" t-value="0"/>
-                        <t t-set="total_cash" t-value="0"/>
+                        <t t-set="grand_total" t-value="0"/>
                         <tr t-foreach="data['values']" t-as="obj">
                             <t t-set="sl" t-value="sl+1"/>
                             <t t-set="total_paid" t-value="total_paid+obj[4]"/>
-                            <t t-if="obj[6]">
-                            <t t-set="cash" t-value="obj[4]-obj[6]"/>
-                            </t>
-                            <t t-else="">
-                            <t t-set="cash" t-value="obj[4]"/>
-                            </t>
-                            <t t-set="total_cash" t-value="total_cash+cash"/>
+                            <t t-set="grand_total" t-value="grand_total+obj[2]"/>
                             <t t-if="obj[8] is not False">
                             <t t-set="total_discount" t-value="obj[7]+obj[8]"/>
                             </t>
@@ -69,10 +63,12 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                        <td><b>Total Collection</b></td>
-                        <td> <span t-esc="total_paid"></span> </td>
-                            <td><b>Total Cash</b></td>
-                        <td> <span t-esc="total_cash"></span> </td>
+                        <td><b></b></td>
+                        <td> </td>
+                        <td> </td>
+                            <td><b>Total</b></td>
+                        <td> <strong><span t-esc="grand_total"></span></strong> </td>
+                        <td> <strong><span t-esc="total_paid"></span></strong> </td>
                         </tr>
                     </tbody>
 
