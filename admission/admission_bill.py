@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 
 class admission_bill(models.Model):
     _name = 'admission.bill'
+    _order = 'id desc'
 
     date = fields.Date(string='First Day Month', required=True, default=datetime.now().strftime('%Y-%m-%d'))
     name = fields.Char("Name")

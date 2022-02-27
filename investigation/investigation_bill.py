@@ -10,6 +10,7 @@ from odoo.exceptions import ValidationError
 
 class investigation_bill(models.Model):
     _name = 'investigation.bill'
+    _order = 'id desc'
 
     # date=fields.Datetime('Date current action', default=fields.Datetime.now, required=False, readonly=False, select=True)
     date=fields.Date(string='Date', required=True,default=datetime.now().strftime('%Y-%m-%d'))
