@@ -68,6 +68,7 @@
                             <td></td>
                         <td><b>Total Collection</b></td>
                         <td> <span t-esc="total_paid"></span> </td>
+                            <td></td>
                             <td><b>Total Cash</b></td>
                         <td> <span t-esc="total_cash"></span> </td>
                         </tr>
