@@ -69,7 +69,6 @@
                         <tr>
                             <th><span>Item Name</span></th>
                             <th><span>Rate</span></th>
-                             <th><span>Discount</span></th>
                             <th class="text-right"><span>Total</span></th>
 <!--                            <th class="text-right"><span>Amount Paid</span></th>-->
 <!--                            <th class="text-right"><span>Balance</span></th>-->
@@ -79,7 +78,6 @@
                         <tr t-foreach="o.investigation_bill_line_id" t-as="z">
                             <td><span t-field="z.bill_item_entry_id.name"/></td>
                             <td><span t-field="z.rate"/></td>
-                            <td><span t-field="z.discount"/></td>
                             <td class="text-right"><span t-field="z.total"/></td>
 <!--                            <td class="text-right"><span t-field="z.rate"/></td>-->
                         </tr>
