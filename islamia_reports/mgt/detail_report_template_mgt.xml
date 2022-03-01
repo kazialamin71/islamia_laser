@@ -21,6 +21,9 @@
                             <th>Discount</th>
                         <th>Grand Total</th>
                         <th>Paid</th>
+                            <th>Professionals</th>
+                        <th>Payment</th>
+                        <th>Cash</th>
 
                         </tr>
                     </thead>
@@ -29,12 +32,22 @@
                         <t t-set="total_paid" t-value="0"/>
                         <t t-set="cash_collected" t-value="0"/>
                         <t t-set="grand_total" t-value="0"/>
+                        <t t-set="total_cash" t-value="0"/>
                         <t t-set="due" t-value="0"/>
+                        <t t-set="total_payment" t-value="0"/>
                         <tr t-foreach="data['values']" t-as="obj">
                             <t t-set="sl" t-value="sl+1"/>
                             <t t-set="total_paid" t-value="total_paid+obj[4]"/>
                             <t t-set="grand_total" t-value="grand_total+obj[2]"/>
                             <t t-set="due" t-value="obj[2]-obj[4]"/>
+                            <t t-if="obj[6]">
+                            <t t-set="cash" t-value="obj[4]-obj[6]"/>
+                            </t>
+                            <t t-else="">
+                            <t t-set="cash" t-value="obj[4]"/>
+                            </t>
+                            <t t-set="total_cash" t-value="total_cash+cash"/>
+
                             <t t-if="obj[8] is not False">
                             <t t-set="total_discount" t-value="obj[7]+obj[8]"/>
                             </t>
@@ -59,6 +72,9 @@
                             <td><span t-esc="total_discount"/></td>
                             <td><span t-esc="obj[2]"/></td>
                             <td><span t-esc="obj[4]"/></td>
+                            <td><span t-esc="obj[10]"/></td>
+                            <td><span t-esc="obj[6]"/></td>
+                            <td><span t-esc="cash"/></td>
 
                         </tr>
                         <tr>
@@ -71,6 +87,9 @@
                             <td><b>Total</b></td>
                         <td> <strong><span t-esc="grand_total"></span></strong> </td>
                         <td> <strong><span t-esc="total_paid"></span></strong> </td>
+                            <td></td>
+                        <td><b>Total Cash</b> </td>
+                        <td> <strong><span t-esc="total_cash"></span></strong> </td>
                         </tr>
                     </tbody>
 
