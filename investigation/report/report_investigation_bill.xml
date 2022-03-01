@@ -120,10 +120,20 @@
                         </t>
                     </div>
                     <div class="col-6 text-right">
-                        <strong>Grand Total: </strong><span t-field="o.grand_total"/><br/>
-                        <t t-if="o.total_without_discount>o.grand_total">
-                        <strong>Discount: </strong><span t-field="o.discount"/><br/>
+                      <t t-if="o.total_without_discount>o.grand_total">
+                        <strong>Total: </strong><span t-field="o.total_without_discount"/><br/>
+
+                            <t t-if="o.discount>0">
+                        <strong>Discount(Percent): </strong><span t-field="o.discount"/>%<br/>
+                        <strong>Discounted Amount: </strong><span t-field="o.discount_amount"/><br/>
+                            </t>
+                            <t t-if="o.flat_discount>0">
+                        <strong>Discount(Flat): </strong><span t-field="o.flat_discount"/><br/>
+
+                            </t>
                         </t>
+                        <strong>Grand Total: </strong><span t-field="o.grand_total"/><br/>
+
                         <strong>Paid: </strong><span t-field="o.paid"/><br/>
                         <strong>Due: </strong><span t-field="o.due"/>
                     </div>
