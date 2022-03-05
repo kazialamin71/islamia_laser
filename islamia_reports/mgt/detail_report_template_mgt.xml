@@ -46,10 +46,14 @@
                         <t t-set="total_cash" t-value="0"/>
                         <t t-set="due" t-value="0"/>
                         <t t-set="total_payment" t-value="0"/>
+                        <t t-set="doctor_payment" t-value="0"/>
+                        <t t-set="total" t-value="0"/>
+                        <t t-set="discounts" t-value="0"/>
                         <tr t-foreach="data['values']" t-as="obj">
                             <t t-set="sl" t-value="sl+1"/>
                             <t t-set="total_paid" t-value="total_paid+obj[4]"/>
                             <t t-set="grand_total" t-value="grand_total+obj[2]"/>
+                            <t t-set="total" t-value="total+obj[1]"/>
                             <t t-set="due" t-value="obj[2]-obj[4]"/>
                             <t t-if="obj[6]">
                             <t t-set="cash" t-value="obj[4]-obj[6]"/>
@@ -65,6 +69,12 @@
                              <t t-else="">
                              <t t-set="total_discount" t-value="obj[7]"/>
                             </t>
+                            <t t-set="discounts" t-value="discounts+total_discount"/>
+
+                            <t t-if="obj[6] is not None">
+                            <t t-set="doctor_payment" t-value="doctor_payment+obj[6]"/>
+                            </t>
+
                             <td><span t-esc="sl"/> </td>
 
                             <td><span t-esc="obj[0]"/></td>
@@ -95,12 +105,12 @@
                         <td><b></b></td>
                         <td> </td>
                         <td> </td>
-                        <td> </td>
-                            <td><b>Total Paid</b></td>
+                       <td> <strong><span t-esc="total"></span></strong> </td>
+                          <td> <strong><span t-esc="discounts"></span></strong> </td>
 <!--                        <td> <strong><span t-esc="grand_total"></span></strong> </td>-->
                         <td> <strong><span t-esc="total_paid"></span></strong> </td>
                             <td></td>
-                        <td><b>Total Cash</b> </td>
+                        <td><b><strong><span t-esc="doctor_payment"></span></strong></b> </td>
                         <td> <strong><span t-esc="total_cash"></span></strong> </td>
                         </tr>
                     </tbody>

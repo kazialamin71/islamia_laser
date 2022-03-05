@@ -27,6 +27,8 @@ class report_detail_component_mgt(models.AbstractModel):
 
         self._cr.execute(query,[start_date,end_date])
         values=self._cr.fetchall()
+        # import pdb
+        # pdb.set_trace()
 
         query="select b.name,bie.name from investigation_bill_line ibl LEFT JOIN bill_item_entry bie ON bie.id=ibl.bill_item_entry_id LEFT JOIN investigation_bill b ON ibl.investigation_bill_id=b.id group by b.name,bie.name"
 
