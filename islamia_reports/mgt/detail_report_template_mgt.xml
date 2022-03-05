@@ -12,14 +12,14 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr>
-                        <th>Sl</th>
+<!--                        <th>Sl</th>-->
                         <th>Bill_id</th>
                             <th>Patient Name</th>
                             <th>Referred by</th>
                             <th>Investigation Name</th>
                             <th>Total</th>
                             <th>Discount</th>
-                        <th>Grand Total</th>
+<!--                        <th>Grand Total</th>-->
                         <th>Paid</th>
                             <th>Professionals</th>
                         <th>Payment</th>
@@ -54,7 +54,7 @@
                              <t t-else="">
                              <t t-set="total_discount" t-value="obj[7]"/>
                             </t>
-                            <td><span t-esc="sl"/> </td>
+<!--                            <td><span t-esc="sl"/> </td>-->
 
                             <td><span t-esc="obj[0]"/></td>
                             <td><span t-esc="obj[3]"/></td>
@@ -70,7 +70,7 @@
                             </td>
                             <td><span t-esc="obj[1]"/></td>
                             <td><span t-esc="total_discount"/></td>
-                            <td><span t-esc="obj[2]"/></td>
+<!--                            <td><span t-esc="obj[2]"/></td>-->
                             <td><span t-esc="obj[4]"/></td>
                             <td><span t-esc="obj[10]"/></td>
                             <td><span t-esc="obj[6]"/></td>
@@ -78,14 +78,15 @@
 
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
+<!--                            <td></td>-->
+<!--                            <td></td>-->
                             <td></td>
                         <td><b></b></td>
                         <td> </td>
                         <td> </td>
-                            <td><b>Total</b></td>
-                        <td> <strong><span t-esc="grand_total"></span></strong> </td>
+                        <td> </td>
+                            <td><b>Total Paid</b></td>
+<!--                        <td> <strong><span t-esc="grand_total"></span></strong> </td>-->
                         <td> <strong><span t-esc="total_paid"></span></strong> </td>
                             <td></td>
                         <td><b>Total Cash</b> </td>
