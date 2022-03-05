@@ -2,8 +2,19 @@
 <odoo>
 <template id="report_details_collection_mgt">
     <t t-call="web.html_container">
-        <t t-call="web.internal_layout">
+<!--        <t t-call="web.internal_layout">-->
+        <t t-call="web.basic_layout">
             <div class="page">
+                        <div class="row mb2 mt1">
+                            <div class="col-3">
+                                <img src='/web/binary/company_logo' class="text-center" style="max-height: 200px; width:100%; margin-top:0px; padding-left:50px;" alt="Logo"/>
+                            </div>
+                            <div class="col-9 float-left">
+                                <strong><h1 style="font-size: 300%;">Islamia Eye &amp; Laser Centre</h1></strong>
+                                <strong><p style="padding-left:50px;">House: 17/3, Road: 3/A, Dhanmondi, Dhaka-1209</p></strong>
+                                <strong><p style="padding-left:150px;">Cell: 01744215691</p></strong>
+                            </div>
+                    </div>
                     <h2 style="text-align:center;">Daily Collection Report</h2>
                 <div class="row">
                     <b><p><span t-esc="data['start_date']"/> to <span t-esc="data['end_date']"/></p></b>
@@ -95,8 +106,6 @@
                     </tbody>
 
                 </table>
-
-
 
             </div>
         </t>
