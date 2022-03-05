@@ -21,7 +21,7 @@ class report_detail_component_mgt(models.AbstractModel):
         start_date = data['form']['date_start']
         end_date = data['form']['date_end']
         query="select b.name,b.total_without_discount,b.grand_total,p.name,m.paid_amount,m.p_type,m.doctors_payment,b.flat_discount,b.discount_amount,d.name,pro.name from investigation_bill b" \
-              " LEFT JOIN examinee_info pro ON pro.id= b.professionals_name LEFT JOIN patient_info p ON b.patient_name = p.id LEFT JOIN doctors_info d ON b.ref_doctors = d.id LEFT JOIN money_receipt m ON b.id = m.bill_id where b.create_date>= %s and b.create_date<=%s" \
+              " LEFT JOIN examinee_info pro ON pro.id= b.professionals_name LEFT JOIN patient_info p ON b.patient_name = p.id LEFT JOIN doctors_info d ON b.ref_doctors = d.id LEFT JOIN money_receipt m ON b.id = m.bill_id where m.create_date>= %s and m.create_date<=%s" \
               "and b.state='confirm' group by b.name,b.grand_total,m.doctors_payment," \
               "p.name,m.paid_amount,m.p_type,b.flat_discount,b.discount_amount,d.name,b.total_without_discount ,pro.name order by b.name"
 
