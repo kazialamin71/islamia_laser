@@ -7,10 +7,11 @@
             id="menu_islamia"  web_icon="account,static/description/icon.png" sequence="45"/>
 
         <menuitem id="menu_investigation_item" name="Investigation" parent="menu_islamia" sequence="2"/>
-        <menuitem id="menu_configuration" name="Configuration" parent="menu_islamia" sequence="4"/>
+        <menuitem id="menu_configuration" name="Configuration" parent="menu_islamia" sequence="5"/>
+        <menuitem id="menu_discharge" name="Discharge" parent="menu_islamia" sequence="4"/>
         <menuitem id="menu_department" name="Department" parent="menu_configuration" sequence="8"/>
-        <menuitem id="menu_doctors" name="Doctors Profile" parent="menu_islamia" sequence="5"/>
-        <menuitem id="menu_patients" name="Patient Profile" parent="menu_islamia" sequence="6"/>
+        <menuitem id="menu_doctors" name="Doctors Profile" parent="menu_islamia" sequence="6"/>
+        <menuitem id="menu_patients" name="Patient Profile" parent="menu_islamia" sequence="7"/>
         <menuitem id="menu_admission" name="Admission" parent="menu_islamia" sequence="3"/>
         <menuitem id="menu_report" name="Reports" parent="menu_islamia" sequence="7"/>
             <!-- Adviser sub-menus -->

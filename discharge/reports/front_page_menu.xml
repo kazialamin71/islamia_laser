@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            string="Front page"
+            id="action_report_front_page"
+            model="front.page"
+            report_type="qweb-pdf"
+            name="islamia_laser.report_front_page"
+            file="islamia_laser.report_front_page"
+            menu="True"
+        />
+        <report
+            string="Back page"
+            id="action_report_back_page"
+            model="front.page"
+            report_type="qweb-pdf"
+            name="islamia_laser.report_back_page"
+            file="islamia_laser.report_back_page"
+            menu="True"
+        />
+    </data>
+</odoo>

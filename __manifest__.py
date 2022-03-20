@@ -38,6 +38,11 @@
         'islamia_reports/detail_report_template.xml',
         'islamia_reports/mgt/details_collection_report_mgt.xml',
         'islamia_reports/mgt/detail_report_template_mgt.xml',
+        'discharge/front_page_view.xml',
+        'discharge/back_page_view.xml',
+        'discharge/reports/front_page_menu.xml',
+        'discharge/reports/report_front_page.xml',
+        'discharge/reports/report_back_page.xml',
     ],
     'demo': [
     ],

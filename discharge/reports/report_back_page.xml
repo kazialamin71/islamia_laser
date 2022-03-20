@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_back_page">
+         <t t-call="web.basic_layout">
+             <style>
+                h1 {
+                  text-decoration: underline;
+                }
+                 .vl {
+              border-left: 2px solid black;
+              height: 80px;
+            }
+                 .customdesign p{
+                 font-size:17px;
+                 }
+                 p { margin:1 }
+             </style>
+            <t t-foreach="docs" t-as="o">
+
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <div class="page">
+                <div class="row">
+                    <div class="col-6 mt20">
+                            <div class="row">
+                                <h2 style="margin-bottom:60px;"><strong>DIAGNOSIS</strong></h2>
+                            </div>
+                            <div class="row">
+                                     <h2><strong>ADVICE</strong></h2>
+                            </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <ul>
+                                    <li>চোখে পানি দিবেন না </li>
+                                    <li>চোখে কালো চশমা ব্যবহার করবেন</li>
+                                    <li>চোখে হাত দিবেন না </li>
+                                </ul>
+                            </div>
+                            <div class="vl"></div>
+                            <div class="col-3">
+                                ১৫ দিন
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2 style="margin-bottom:60px;">OPERATION NOTE</h2>
+                        </div>
+                        <div class="row">
+                            <h2 style="margin-bottom:40px;">DATE:<span t-field="o.date"/></h2>
+                        </div>
+                        <div class="row">
+                            <h2 style="margin-bottom:10px;">SURGEON:<span t-field="o.admit_by"/></h2>
+                        </div>
+                    </div>
+                    <div class="col-6 mt20">
+                        <div class="row" style="margin-left:30px; padding:10px">
+                                <h2 style="margin-bottom:5px;"><strong>TREATMENT ADVICE</strong></h2>
+                            </div>
+
+                        <div class="row" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.drop1 is False"><strong>১..................... Eye Drop </strong></t><t t-else=""><strong>১.<span t-field="o.drop1"/> Eye Drop </strong></t></h4>
+                                 <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                               <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                               <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                                 </div>
+                            </div>
+
+                <div class="row" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.drop2 is False"><strong>২..................... Eye Drop </strong></t><t t-else=""><strong>২.<span t-field="o.drop2"/> Eye Drop </strong></t></h4>
+                                 <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                               <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                                 </div>
+
+                            </div>
+                <div class="row" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.drop3 is False"><strong>৩..................... Eye Drop </strong></t><t t-else=""><strong>৩.<span t-field="o.drop3"/> Eye Drop </strong></t></h4>
+                                 <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                               </div>
+                            </div>
+                <div class="row mb44" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.drop4 is False"><strong>৪.................... Eye Drop </strong></t><t t-else=""><strong>৪.<span t-field="o.drop4"/> Eye Drop </strong></t></h4>
+                                 <p>১<![CDATA[&nbsp;]]>  ফোটা <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>...........<![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]> ঘণ্টা  পরপর <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]> ডান<![CDATA[&nbsp;]]>/<![CDATA[&nbsp;]]> বাম <![CDATA[&nbsp;]]> <![CDATA[&nbsp;]]>চোখে<![CDATA[&nbsp;]]> .............  <![CDATA[&nbsp;]]>দিন </p>
+                               </div>
+                            </div>
+                        <br/>
+                        <br/>
+
+<!--                        design for tablet/capsule-->
+
+                    <div class="row mb10" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.tab1 is False"><strong>৫. Tab/Cap<![CDATA[&nbsp;]]>............................ </strong></t><t t-else=""><strong>৫. Tab/Cap:<![CDATA[&nbsp;]]><span t-field="o.tab1"/></strong></t></h4>
+                                 <p>........................................................................... </p>
+                               </div>
+                            </div>
+                        <div class="row mb10" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.tab2 is False"><strong>৬. Tab/Cap<![CDATA[&nbsp;]]>............................ </strong></t><t t-else=""><strong>৬. Tab/Cap:<![CDATA[&nbsp;]]><span t-field="o.tab2"/></strong></t></h4>
+                                 <p>........................................................................... </p>
+                               </div>
+                            </div>
+                        <div class="row mb10" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.tab3 is False"><strong>৭. Tab/Cap<![CDATA[&nbsp;]]>............................ </strong></t><t t-else=""><strong>৭. Tab/Cap:<![CDATA[&nbsp;]]><span t-field="o.tab3"/></strong></t></h4>
+                                 <p>........................................................................... </p>
+                               </div>
+                            </div>
+                        <div class="row" style="margin-left:30px;">
+                            <div class="col-12 customdesign">
+                                <h4 style="margin-bottom:2px;"><t t-if="o.tab4 is False"><strong>৮. Tab/Cap<![CDATA[&nbsp;]]>............................ </strong></t><t t-else=""><strong>৮. Tab/Cap:<![CDATA[&nbsp;]]><span t-field="o.tab4"/></strong></t></h4>
+                                 <p>........................................................................... </p>
+                               </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            </t>
+
+
+        </t>
+    </template>
+
+</odoo>

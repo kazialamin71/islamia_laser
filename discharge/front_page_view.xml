@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    <!-- base structure of product.template, common with product.product -->
+    <record id="front_page_view" model="ir.ui.view">
+        <field name="name">Discharge Entry</field>
+        <field name="model">front.page</field>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <form string="Discharge">
+                <sheet>
+                    <group>
+                    <field name='patient_name'/>
+                    <field name='age'/>
+                    <field name='sex'/>
+                    <field name='ward'/>
+                    <field name='reg'/>
+                    <field name='address'/>
+                    <field name='admit_date'/>
+                    <field name='discharge_date'/>
+                    <field name='admit_by'/>
+                    <field name='department'/>
+                    </group>
+<!--                        <h2>Back Page</h2>-->
+                    <group>
+                        <field name='drop1'/>
+                        <field name='drop2'/>
+                        <field name='drop3'/>
+                        <field name='drop4'/>
+                        <field name='tab1'/>
+                        <field name='tab2'/>
+                        <field name='tab3'/>
+                        <field name='tab4'/>
+                        <field name='operation_note'/>
+                        <field name='date'/>
+                    </group>
+                                  </sheet>
+
+            </form>
+        </field>
+    </record>
+
+      <record id="front_page_entry_tree" model="ir.ui.view">
+        <field name="name">front.page tree</field>
+        <field name="model">front.page</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name='patient_name'/>
+
+            </tree>
+        </field>
+    </record>
+
+        <record id="front_page_kanban" model="ir.ui.view">
+        <field name="name">front.pagekanabn</field>
+        <field name="model">front.page</field>
+        <field name="arch" type="xml">
+              <kanban class="o_bill_kanban">
+                   <field name='name'/>
+                  <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong><field name="patient_name"/></strong>
+                                        <field name="age"/>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="float-right"><field name="patient_name"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+
+              </kanban>
+
+        </field>
+    </record>
+
+
+    <record id="front_page_act" model="ir.actions.act_window">
+        <field name="name">Front Page</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">front.page</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Discharge
+            </p>
+        </field>
+    </record>
+
+
+
+
+<!--    test of kanban-->
+
+
+
+        <menuitem id="menu_front_page_entry" name="Discharge Entry"
+            parent="islamia_laser.menu_discharge"
+            action="front_page_act" sequence="116" groups="islamia_laser.group_islamia_user,islamia_laser.group_islamia_general"/>
+    </data>
+    </odoo>

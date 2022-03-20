@@ -52,9 +52,11 @@
                         <tr t-foreach="data['values']" t-as="obj">
                             <t t-set="sl" t-value="sl+1"/>
                             <t t-set="total_paid" t-value="total_paid+obj[4]"/>
+                            <t t-if="obj[5]!='due_pay'">
                             <t t-set="grand_total" t-value="grand_total+obj[2]"/>
                             <t t-set="total" t-value="total+obj[1]"/>
                             <t t-set="due" t-value="obj[2]-obj[4]"/>
+                            </t>
                             <t t-if="obj[6]">
                             <t t-set="cash" t-value="obj[4]-obj[6]"/>
                             </t>
@@ -62,6 +64,7 @@
                             <t t-set="cash" t-value="obj[4]"/>
                             </t>
                             <t t-set="total_cash" t-value="total_cash+cash"/>
+                            <t t-if="obj[5]!='due_pay'">
 
                             <t t-if="obj[8] is not False">
                             <t t-set="total_discount" t-value="obj[7]+obj[8]"/>
@@ -74,11 +77,13 @@
                             <t t-if="obj[6] is not None">
                             <t t-set="doctor_payment" t-value="doctor_payment+obj[6]"/>
                             </t>
+                            </t>
 
                             <td><span t-esc="sl"/> </td>
 
                             <td><span t-esc="obj[0]"/></td>
                             <td><span t-esc="obj[3]"/></td>
+                            <t t-if="obj[5]!='due_pay'">
                             <td><span t-esc="obj[9]"/></td>
                                                 <td>
 
@@ -91,10 +96,23 @@
                             </td>
                             <td><span t-esc="obj[1]"/></td>
                             <td><span t-esc="total_discount"/></td>
+                            </t>
+                            <t t-elif="obj[5]=='due_pay'">
+                                <td></td>
+                                <td>Due Pay</td>
+                                <td></td>
+                                <td></td>
+                            </t>
 <!--                            <td><span t-esc="obj[2]"/></td>-->
                             <td><span t-esc="obj[4]"/></td>
+                            <t t-if="obj[5]!='due_pay'">
                             <td><span t-esc="obj[10]"/></td>
                             <td><span t-esc="obj[6]"/></td>
+                            </t>
+                           <t t-elif="obj[5]=='due_pay'">
+                               <td></td>
+                               <td></td>
+                           </t>
                             <td><span t-esc="cash"/></td>
 
                         </tr>

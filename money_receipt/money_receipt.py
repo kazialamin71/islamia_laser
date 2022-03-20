@@ -2,6 +2,7 @@ from odoo import models,fields
 
 class money_receipt(models.Model):
     _name = 'money.receipt'
+    _order = 'id desc'
 
     name = fields.Char("Mr ID")
     date = fields.Date("Date")
