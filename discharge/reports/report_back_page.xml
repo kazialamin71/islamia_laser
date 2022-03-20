@@ -85,7 +85,6 @@
                                </div>
                             </div>
                         <br/>
-                        <br/>
 
 <!--                        design for tablet/capsule-->
 
@@ -113,6 +112,15 @@
                                  <p>........................................................................... </p>
                                </div>
                             </div>
+                        <div class="row" style="margin-left:30px">
+                            <div class="col-7"></div>
+                            <div class="col-5">
+                                <p style="margin:0;">-------------------------</p>
+                                <p style="margin:0;">Signature</p>
+                                <p>Doctor Name: <![CDATA[&nbsp;]]> </p>
+                                <p style="margin:0;">Date:<![CDATA[&nbsp;]]> </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
