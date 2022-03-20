@@ -31,6 +31,7 @@
                         <field name='tab2'/>
                         <field name='tab3'/>
                         <field name='tab4'/>
+                        <field name='diagnosis'/>
                         <field name='operation_note'/>
                         <field name='date'/>
                     </group>

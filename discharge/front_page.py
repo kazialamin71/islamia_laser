@@ -26,6 +26,7 @@ class front_page(models.Model):
     tab3 = fields.Char("Tab3")
     tab4 = fields.Char("Tab4")
     operation_note = fields.Char("Operation Note")
+    diagnosis = fields.Char("Diagnosis")
     date=fields.Date("Operation Date")
     # surgeon=fields.Many2one("doctors.info","Admitted Under")
 

@@ -13,6 +13,9 @@
                  .customdesign p{
                  font-size:17px;
                  }
+                 li{
+                 font-size:23px;
+                 }
                  p { margin:1 }
              </style>
             <t t-foreach="docs" t-as="o">
@@ -22,10 +25,14 @@
                 <div class="row">
                     <div class="col-6 mt20">
                             <div class="row">
-                                <h2 style="margin-bottom:60px;"><strong>DIAGNOSIS</strong></h2>
+                                <h2 style="margin-bottom:5px;"><u><strong>DIAGNOSIS</strong></u></h2>
                             </div>
+                        <div class="row">
+                                <h4 style="margin-bottom:70px;"><span t-field="o.diagnosis"/></h4>
+                            </div>
+                    <br/>
                             <div class="row">
-                                     <h2><strong>ADVICE</strong></h2>
+                                     <h2><u><strong>ADVICE</strong></u></h2>
                             </div>
                         <div class="row">
                             <div class="col-9">
@@ -37,22 +44,27 @@
                             </div>
                             <div class="vl"></div>
                             <div class="col-3">
-                                ১৫ দিন
+                                <p style="font-size:25px;">১৫ দিন</p>
                             </div>
                         </div>
+                        <div class="row mt20">
+                            <h2 style="margin-bottom:5px;"><strong><u>OPERATION NOTE</u></strong></h2>
+                            </div>
+                            <div class="row">
+                            <h4 style="margin-bottom:40px;"><span t-field="o.operation_note"/></h4>
+                        </div>
+                        <br/>
+                        <br/>
                         <div class="row">
-                            <h2 style="margin-bottom:60px;">OPERATION NOTE</h2>
+                            <h2 style="margin-bottom:40px;"><strong><u>DATE:<![CDATA[&nbsp;]]></u></strong><span t-field="o.date"/></h2>
                         </div>
                         <div class="row">
-                            <h2 style="margin-bottom:40px;">DATE:<span t-field="o.date"/></h2>
-                        </div>
-                        <div class="row">
-                            <h2 style="margin-bottom:10px;">SURGEON:<span t-field="o.admit_by"/></h2>
+                            <h2 style="margin-bottom:10px;"><b>SURGEON:</b><![CDATA[&nbsp;]]></h2><h4><span t-field="o.admit_by"/></h4>
                         </div>
                     </div>
                     <div class="col-6 mt20">
                         <div class="row" style="margin-left:30px; padding:10px">
-                                <h2 style="margin-bottom:5px;"><strong>TREATMENT ADVICE</strong></h2>
+                            <h2 style="margin-bottom:5px;"><strong><u>TREATMENT ADVICE</u></strong></h2>
                             </div>
 
                         <div class="row" style="margin-left:30px;">
@@ -117,7 +129,7 @@
                             <div class="col-5">
                                 <p style="margin:0;">-------------------------</p>
                                 <p style="margin:0;">Signature</p>
-                                <p>Doctor Name: <![CDATA[&nbsp;]]> </p>
+                                <p style="margin:0;">Doctor Name: <![CDATA[&nbsp;]]> </p>
                                 <p style="margin:0;">Date:<![CDATA[&nbsp;]]> </p>
                             </div>
                         </div>
