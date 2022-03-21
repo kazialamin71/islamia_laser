@@ -34,9 +34,9 @@
                             <div class="col-12">
                     <h1>ইসলামিয়া আই এন্ড লেজার সেন্টার</h1>
                     <h2>ISLAMIA EYE &amp; LASER CENTRE</h2>
-                        <p>বাসা# ১৭/৩, রোড # ৩/এ, সাতমসজিদ রোড, ধানমন্ডি, ঢাকা-১২০৯ ।</p>
+                        <p>বাসা # ১৭/৩, রোড # ৩/এ, সাতমসজিদ রোড, ধানমন্ডি, ঢাকা-১২০৯ ।</p>
                         <p>(জাপান-বাংলাদেশ ফ্রেন্ডশিপ হাসপাতালের পশ্চিমে)</p>
-                        <p>(ঝিগালতা বাস স্ট্যান্ড এর নিকটে)</p>
+                        <p>(ঝিগাতলা বাস স্ট্যান্ড এর নিকটে)</p>
                         <p>ফোনঃ ০১৭৪৪-২১৫৬৯১ </p>
                                 </div>
                         </div>
@@ -48,26 +48,26 @@
                         </div>
                         <div class="something" style="border:1px solid black; padding:20px;margin-left:30px;">
                         <div class="row" style="margin-bottom:10px;">
-                            <div class="col-5"><h5><b>Name:</b> <span t-field="o.patient_name.name"/></h5></div>
-                            <div class="col-4"><h5><b>Age:</b> <span t-field="o.age"/></h5></div>
-                            <div class="col-3"><h5><b>Sex:</b><span t-field="o.sex"/></h5></div>
+                            <div class="col-8"><h5><b>Name: </b> <span t-field="o.patient_name.name"/></h5></div>
+                            <div class="col-4" style="text-right"><h5><b>Age:<![CDATA[&nbsp;]]></b> <span t-field="o.age"/></h5></div>
                         </div>
                         <div class="row" style="margin-bottom:10px;">
-                            <div class="col-6"><h5><b>Ward/Cabin:</b><span t-field="o.ward"/></h5></div>
-                            <div class="col-6"><h5><b>Reg:</b><span t-field="o.reg"/></h5></div>
+                            <div class="col-3"><h5><b>Sex:<![CDATA[&nbsp;]]></b><t t-if="o.sex=='male'">Male</t><t t-else="">Female</t> </h5></div>
+                            <div class="col-5"><h5><b>Ward/Cabin:<![CDATA[&nbsp;]]></b><span t-field="o.ward"/></h5></div>
+                            <div class="col-4"><h5><b>Reg:<![CDATA[&nbsp;]]></b><span t-field="o.reg"/></h5></div>
                         </div>
                         <div class="row" style="margin-bottom:10px;">
-                            <div class="col-12"><h5><b>Address:</b><span t-field="o.address"/></h5></div>
+                            <div class="col-12"><h5><b>Address:<![CDATA[&nbsp;]]></b><span t-field="o.address"/></h5></div>
                         </div>
                         <div class="row" style="margin-bottom:10px;">
-                            <div class="col-6"><h5><b>Admission On:</b> <span t-field="o.admit_date"/></h5></div>
-                            <div class="col-6"><h5><b>Discharge On:</b> <span t-field="o.discharge_date"/></h5></div>
+                            <div class="col-6"><h5><b>Admission On:<![CDATA[&nbsp;]]></b> <span t-field="o.admit_date"/></h5></div>
+                            <div class="col-6"><h5><b>Discharge On:<![CDATA[&nbsp;]]></b> <span t-field="o.discharge_date"/></h5></div>
                         </div>
                         <div class="row" style="margin-bottom:10px;">
-                            <div class="col-12"><h5><b>Admitted Under:</b> <span t-field="o.admit_by.name"/></h5></div>
+                            <div class="col-12"><h5><b>Admitted Under:<![CDATA[&nbsp;]]></b> <span t-field="o.admit_by.name"/></h5></div>
                         </div>
                             <div class="row">
-                                <div class="col-12"><h5><b>Department Of:</b><span t-field="o.department"/></h5></div>
+                                <div class="col-12"><h5><b>Department Of:<![CDATA[&nbsp;]]></b><span t-field="o.department"/></h5></div>
                         </div>
                     </div>
                     </div>
