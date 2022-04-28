@@ -22,7 +22,7 @@
                     <div class="col-6 mt30">
                         <br/>
 
-                        <h1 style="margin-top:30px"><strong>FOLLOW UP</strong></h1>
+                        <h1 style="margin-top:30px"><u><strong>FOLLOW UP</strong></u></h1>
                         <hr/>
                     </div>
                     <div class="col-6 mt1">
@@ -36,19 +36,20 @@
                             <div class="col-12">
                                 <h1 style="font-size:44px"><strong>ইসলামিয়া আই এন্ড লেজার সেন্টার</strong></h1>
                                 <h1 style="font-size:38px"><strong>ISLAMIA EYE &amp; LASER CENTRE</strong></h1>
-                        <p>বাসা # ১৭/৩, রোড # ৩/এ, সাতমসজিদ রোড, ধানমন্ডি, ঢাকা-১২০৯ ।</p>
-                        <p>(জাপান-বাংলাদেশ ফ্রেন্ডশিপ হাসপাতালের পশ্চিমে)</p>
-                        <p>(ঝিগাতলা বাস স্ট্যান্ড এর নিকটে)</p>
-                        <p>ফোনঃ ০১৭৪৪-২১৫৬৯১ </p>
+                        <p><strong>বাসা # ১৭/৩, রোড # ৩/এ, সাতমসজিদ রোড, ধানমন্ডি, ঢাকা-১২০৯ ।</strong></p>
+                        <p><strong>(জাপান-বাংলাদেশ ফ্রেন্ডশিপ হাসপাতালের পশ্চিমে)</strong></p>
+                        <p><strong>(ঝিগাতলা বাস স্ট্যান্ড এর নিকটে)</strong></p>
+                        <p><strong>ফোনঃ ০১৭৪৪-২১৫৬৯১</strong></p>
                                 </div>
                         </div>
                         <br/>
 
                         <div class="row" style="margin-left:30px; padding:20px;">
                             <div class="col-12 text-center" style="align:center;">
-                                <h2 style="border:1px solid black; width:80%; align:center; margin-left:40px"><strong>Discharge Certificate</strong></h2>
+                                <h2 style="border:1px solid black; width:80%; align:center; margin-left:40px; background-color:grey;"><strong>Discharge Certificate</strong></h2>
                             </div>
                         </div>
+                        <br/>
                         <br/>
                         <br/>
                         <div class="something" style="border:1px solid black; padding:20px;margin-left:30px;">
@@ -70,9 +71,6 @@
                         </div>
                         <div class="row" style="margin-bottom:10px;">
                             <div class="col-12"><h5><b>Admitted Under:<![CDATA[&nbsp;]]></b> <span t-field="o.admit_by.name"/></h5></div>
-                        </div>
-                            <div class="row">
-                                <div class="col-12"><h5><b>Department Of:<![CDATA[&nbsp;]]></b><span t-field="o.department"/></h5></div>
                         </div>
                     </div>
                     </div>

@@ -26,12 +26,12 @@
                     <div class="col-6 mt20">
                             <div class="row">
                                 <br/>
-                                <h2 style="margin-bottom:5px; margin-top:45px;"><strong>DIAGNOSIS:</strong><![CDATA[&nbsp;]]><span t-field="o.diagnosis"/></h2>
+                                <h3 style="margin-bottom:5px; margin-top:45px;"><strong>DIAGNOSIS:</strong><![CDATA[&nbsp;]]><span t-field="o.diagnosis"/></h3>
                             </div>
 
                     <br/>
                             <div class="row">
-                                     <h2 style="margin-top:60px;"><strong>ADVICE</strong></h2>
+                                     <h3 style="margin-top:60px;"><strong>ADVICE</strong></h3>
                             </div>
                         <div class="row">
                             <div class="col-9">
@@ -49,18 +49,16 @@
                         <br/>
                         <br/>
                         <div class="row">
-                            <h2 style="margin-top:35px;"><strong>OPERATION NOTE:</strong><![CDATA[&nbsp;]]><span t-field="o.operation_note"/></h2>
+                            <h3 style="margin-top:65px;"><strong>OPERATION NOTE:</strong><![CDATA[&nbsp;]]><span t-field="o.operation_note"/></h3>
                             </div>
                         <br/>
                         <br/>
                         <div class="row">
-                            <h4 style="margin-top:20px"><strong>DATE:<![CDATA[&nbsp;]]></strong><span t-field="o.date"/></h4>
+                            <h4 style="margin-top:30px"><strong>DATE:<![CDATA[&nbsp;]]></strong><span t-field="o.date"/></h4>
                         </div>
                         <br/>
-                        <br/>
-                        <br/>
                         <div class="row">
-                            <h4 style="margin-bottom:10px; margin-top:170px; padding:0;"><b>SURGEON:</b><![CDATA[&nbsp;]]><span t-field="o.admit_by"/></h4>
+                            <h4 style="margin-bottom:10px; margin-top:20px; padding:0;"><b>SURGEON:</b><![CDATA[&nbsp;]]><span t-field="o.admit_by"/></h4>
                         </div>
                     </div>
                     <div class="col-6 mt20">
@@ -144,7 +142,6 @@
                             <div class="col-5">
                                 <p style="margin:0;">-------------------------</p>
                                 <p style="margin:0;">Signature</p>
-                                <p style="margin:0;">Doctor Name: <![CDATA[&nbsp;]]> </p>
                                 <p style="margin:0;">Date:<![CDATA[&nbsp;]]> </p>
                             </div>
                         </div>
