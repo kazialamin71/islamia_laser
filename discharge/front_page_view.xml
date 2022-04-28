@@ -27,6 +27,8 @@
                         <field name='drop2'/>
                         <field name='drop3'/>
                         <field name='drop4'/>
+                        <field name='drop5'/>
+                        <field name='drop6'/>
                         <field name='tab1'/>
                         <field name='tab2'/>
                         <field name='tab3'/>

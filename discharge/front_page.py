@@ -21,6 +21,8 @@ class front_page(models.Model):
     drop2 = fields.Char("Drop2")
     drop3 = fields.Char("Drop3")
     drop4 = fields.Char("Drop4")
+    drop5 = fields.Char("Drop5")
+    drop6 = fields.Char("Drop6")
     tab1 = fields.Char("Tab1")
     tab2 = fields.Char("Tab2")
     tab3 = fields.Char("Tab3")
